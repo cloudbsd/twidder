@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+
+  home:
+    index:
+      hello: "Hello world"

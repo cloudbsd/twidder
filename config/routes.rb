@@ -1,8 +1,13 @@
 Twidder::Application.routes.draw do
   devise_for :users
 
-  get "home/index"
-  root :to => 'home#index'
+  scope '(:locale)' do
+    get "home/index"
+    authenticated :user do
+      root :to => 'home#index'
+    end
+    root :to => 'home#index'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
