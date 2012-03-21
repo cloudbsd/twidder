@@ -40,5 +40,8 @@ gem 'jquery-rails'
 
 # To add user authentication feature
 gem 'devise', '~> 2.0.0'
+gem 'devise-i18n'
 
 gem 'faker'
+
+gem 'rails-i18n'

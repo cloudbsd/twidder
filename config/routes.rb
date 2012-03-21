@@ -1,7 +1,7 @@
 Twidder::Application.routes.draw do
-  devise_for :users
-
   scope '(:locale)' do
+    devise_for :users
+
     get "home/index"
     authenticated :user do
       root :to => 'home#index'
