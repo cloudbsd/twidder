@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <p class="navbar-text pull-right">
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  </p>
+<% else %>
+  <p class="navbar-text pull-right">
+  <%= link_to 'Login', new_user_session_path %>
+<% end %>
+
+<% if user_signed_in? %>
+  <p class="navbar-text pull-right">
+  <%= link_to 'Setting', edit_user_registration_path %>
+  </p>
+<% else %>
+  <p class="navbar-text pull-right">
+  <%= link_to 'Sign up', new_user_registration_path %>
+  </p>
+<% end %>
+<% if user_signed_in? %>
+  <p class="navbar-text pull-right">Logged in as <%= link_to current_user.name, current_user %></p>
+<% end %>

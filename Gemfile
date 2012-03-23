@@ -45,3 +45,8 @@ gem 'devise-i18n'
 gem 'faker'
 
 gem 'rails-i18n'
+
+group :assets do
+# gem 'bootstrap-sass'
+  gem 'anjlab-bootstrap-rails', '>= 2.0.2', :require => 'bootstrap-rails'
+end
