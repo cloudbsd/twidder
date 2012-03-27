@@ -2,6 +2,11 @@ Twidder::Application.routes.draw do
   scope '(:locale)' do
     devise_for :users
 
+    resources :users, :only => [:index, :show, :destroy] do
+    end
+
+    get "users/show"
+
     get "home/index"
     authenticated :user do
       root :to => 'home#index'
