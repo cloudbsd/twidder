@@ -5,8 +5,6 @@ Twidder::Application.routes.draw do
     resources :users, :only => [:index, :show, :destroy] do
     end
 
-    get "users/show"
-
     get "home/index"
     authenticated :user do
       root :to => 'home#index'

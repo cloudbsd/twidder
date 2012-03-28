@@ -1,0 +1,23 @@
+<p>
+<%= image_tag(@user.gravatar) %>
+</p>
+
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Gravatar:</b>
+  <%= @user.gravatar %>
+</p>
+
+
+<%= link_to_if is_current_user?(@user), 'Edit', edit_user_registration_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -38,6 +38,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+
 # To add user authentication feature
 gem 'devise', '~> 2.0.0'
 gem 'devise-i18n'
@@ -49,4 +50,7 @@ gem 'rails-i18n'
 group :assets do
 # gem 'bootstrap-sass'
   gem 'anjlab-bootstrap-rails', '>= 2.0.2', :require => 'bootstrap-rails'
+
+# gem 'will_paginate'
+  gem 'bootstrap-will_paginate'
 end

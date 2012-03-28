@@ -34,7 +34,7 @@ def make_users
   qi = User.create!(:name => 'qi',
                     :nickname => 'Qi Li',
                     :email => 'cloudbsd@gmail.com',
-                    :gravatar => 'user_qi.jpg',
+                    :gravatar => 'user_qi.png',
                     :password => '888888',
                     :password_confirmation => '888888')
 # qi.toggle!(:admin)
