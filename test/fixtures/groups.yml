@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+group1:
+  name: Group1
+  description: GroupDescription1
+
+group2:
+  name: Group2
+  description: GroupDescription2
