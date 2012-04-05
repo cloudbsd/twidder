@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-# before_filter :authenticate_user!, :only => [:index, :followees, :followers]
+  before_filter :authenticate_user!, :only => [:show, :followees, :followers]
 
   # GET /users
   # GET /users.json
@@ -35,5 +35,17 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def followees
+    @user = User.find(params[:id])
+    @users = @user.followees.page(params[:page])
+    render 'index'
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+    render 'index'
   end
 end

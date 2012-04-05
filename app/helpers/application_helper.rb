@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def show_nav_items
     items = [];
-    items << NavItem.new("Users", '#', "users" == params[:controller])
+    items << NavItem.new("Users", users_path, "users" == params[:controller])
     items << NavItem.new("Microgroups", '#', "microgroups" == params[:controller])
     items << NavItem.new("Microposts", '#', "microposts" == params[:controller])
     items << NavItem.new("Project", '#', "projects" == params[:controller])

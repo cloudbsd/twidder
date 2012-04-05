@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     Rake::Task['db:reset'].invoke
     make_users
-  # make_user_relationships
+    make_following_items
   # make_microgroup
   # make_microposts
   # make_projects
@@ -71,4 +71,22 @@ def make_users
                  password_confirmation: password)
   end
   puts '50 new users created'
+end
+
+
+# ----------------------------------------------------------------------------
+# FollowingItem seed data
+# ----------------------------------------------------------------------------
+
+def make_following_items
+  FollowingItem.delete_all
+
+  puts 'SETTING UP DEFAULT FOLLOWING ITEM'
+
+  users = User.all
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  followees = users[3..50]
+  followers = users[3..40]
+  followees.each { |followee| qi.follow!(followee) }
+  followers.each { |follower| follower.follow!(qi) }
 end

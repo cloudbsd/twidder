@@ -18,6 +18,10 @@
   <%= @user.gravatar %>
 </p>
 
+<p>
+<%= render 'follow_status' %>
+</p>
+
 
 <%= link_to_if is_current_user?(@user), 'Edit', edit_user_registration_path(@user) %> |
 <%= link_to 'Back', users_path %>

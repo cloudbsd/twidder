@@ -1,0 +1,16 @@
+<% unless is_current_user?(@user) %>
+  <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= form_for current_user.followee_items.find_by_followee_id(@user),
+                   html: { method: :delete }, remote: true do |f| %>
+        <div class="actions"><%= f.submit "Unfollow" %></div>
+      <% end %>
+    <% else %>
+      <%= form_for current_user.followee_items.build(followee_id: @user.id),
+                   remote: true do |f| %>
+        <div><%= f.hidden_field :followee_id %></div>
+        <div class="actions"><%= f.submit "Follow" %></div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
