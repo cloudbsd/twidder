@@ -34,3 +34,14 @@ en:
     follow_status:
       following: "Following"
       follower: "Follower"
+    follow_form:
+      follow: "Follow"
+      unfollow: "Unfollow"
+
+  following_items:
+    create:
+      following: "Following"
+      follower: "Follower"
+    destroy:
+      following: "Following"
+      follower: "Follower"

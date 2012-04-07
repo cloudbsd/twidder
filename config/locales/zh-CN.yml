@@ -35,3 +35,14 @@ zh-CN:
     follow_status:
       following: "关注"
       follower: "粉丝"
+    follow_form:
+      follow: "关注"
+      unfollow: "取消关注"
+
+  following_items:
+    create:
+      following: "关注"
+      follower: "粉丝"
+    destroy:
+      following: "关注"
+      follower: "粉丝"
