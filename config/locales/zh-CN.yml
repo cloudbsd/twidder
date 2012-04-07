@@ -11,6 +11,9 @@ zh-CN:
   shared:
     navbar:
       twidder: "代码分析"
+      users: "用户"
+      microposts: "微博"
+      microgroups: "微群"
     navuser:
       signup: "注册"
       login: "登录"

@@ -11,6 +11,9 @@ en:
   shared:
     navbar:
       twidder: "Twidder"
+      users: "Users"
+      microposts: "Microposts"
+      microgroups: "Microgroups"
     navuser:
       signup: "Sign up"
       login: "Login"
