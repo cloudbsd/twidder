@@ -1,8 +1,8 @@
 class CreateFollowingItems < ActiveRecord::Migration
   def change
     create_table :following_items do |t|
-      t.references :follower
-      t.references :followee
+      t.references :follower, :null => false
+      t.references :followee, :null => false
 
       t.timestamps
     end

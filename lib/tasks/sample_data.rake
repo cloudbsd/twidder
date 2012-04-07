@@ -90,3 +90,25 @@ def make_following_items
   followees.each { |followee| qi.follow!(followee) }
   followers.each { |follower| follower.follow!(qi) }
 end
+
+
+# ----------------------------------------------------------------------------
+# Group seed data
+# ----------------------------------------------------------------------------
+
+def make_group
+  Group.delete_all
+
+  puts 'SETTING UP DEFAULT GROUP'
+
+  # microgroups belong to Qi Li
+  strdesc = %{Microgroup is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
+
+  10.times do |n|
+    name = format "user%03d", n+1
+    Group.create!(name: name,
+                 description: strdesc)
+  end
+  puts '10 new groups created'
+end
+
