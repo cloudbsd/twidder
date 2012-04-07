@@ -2,9 +2,33 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 zh-CN:
-  hello: "你好 世界"
+# hello: "你好 世界"
+
+  layouts:
+    application:
+      logout: "注销"
+
+  shared:
+    navbar:
+      twidder: "代码分析"
+    navuser:
+      signup: "注册"
+      login: "登录"
+      logout: "退出"
+      profile: "个人信息"
 
   home:
     index:
+      logout: "注销"
       hello: "你好 世界"
-      hello_flash: "你好 Flash"
+      hello_flash: "你好 动画"
+
+  users:
+    index:
+      title: "用户列表"
+    user_info:
+      name: "姓名"
+      email: "邮件"
+    follow_status:
+      following: "关注"
+      follower: "粉丝"

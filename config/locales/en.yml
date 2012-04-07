@@ -4,7 +4,30 @@
 en:
 # hello: "Hello World"
 
+  layouts:
+    application:
+      logout: "Layout Logout"
+
+  shared:
+    navbar:
+      twidder: "Twidder"
+    navuser:
+      signup: "Sign up"
+      login: "Login"
+      logout: "Logout"
+      profile: "Profile"
+
   home:
     index:
       hello: "Hello World"
       hello_flash: "Hello Flash"
+
+  users:
+    index:
+      title: "Listing users"
+    user_info:
+      name: "Name"
+      email: "Email"
+    follow_status:
+      following: "Following"
+      follower: "Follower"

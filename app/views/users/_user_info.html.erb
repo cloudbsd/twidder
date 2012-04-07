@@ -5,12 +5,12 @@
 <%= render 'follow_form' if user_signed_in? %>
 
 <p>
-  <b>Name:</b>
+  <b><%= t('.name') %>:</b>
   <%= @user.nickname %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= t('.email') %>:</b>
   <%= @user.email %>
 </p>
 
