@@ -8,6 +8,8 @@ Twidder::Application.routes.draw do
       end
     end
 
+    resources :following_items, only: [:create, :destroy]
+
     get "home/index"
     authenticated :user do
       root :to => 'home#index'

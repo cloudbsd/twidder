@@ -2,6 +2,7 @@
 <%= image_tag(@user.gravatar) %>
 </p>
 
+<%= render 'follow_form' if user_signed_in? %>
 
 <p>
   <b>Name:</b>
