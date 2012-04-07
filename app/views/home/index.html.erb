@@ -1,11 +1,37 @@
-<h1><%=t '.hello' %></h1>
-<p><%= flash[:notice] %></p>
+<div class="content">
 
-<%= form_tag root_path, class: 'locale' do %>
-  <%= select_tag 'set_locale', 
-    options_for_select(LANGUAGES, I18n.locale.to_s),
-    onchange: 'this.form.submit()'
-  %>
-  <%= submit_tag 'submit' %>
-  <%= javascript_tag "$('.locale input').hide()" %>
-<% end %>
+<div class="hero-unit">
+  <h1>MAC OS X</h1>
+  <p>Mac OS X is based upon the Mach kernel. Certain parts from FreeBSD's and NetBSD's implementation of Unix were incorporated in NeXTSTEP, the core of Mac OS X.
+  OS X Lion is the most technologically advanced operating system Apple has ever released. While there's a lot of powerful stuff going on under the hood, Lion makes it easy for you to work, play, and get entertainment on your Mac.</p>
+  <p><a class="btn btn-primary btn-large" href= <%= new_user_registration_path %> >Sign up &raquo;</a></p>
+</div>
+
+  <div class="row">
+    <div class="span3">
+      <p><b>这些人正在用微博</b></p>
+      <p> </p>
+      <hr>
+      <h2>Most Forked</h2>
+      <p> FreeBSD® is an advanced operating system for modern server, desktop, and embedded computer platforms. FreeBSD's code base has undergone over thirty years of continuous development, improvement, and optimization.</p>
+      <p><a class="btn" href="http://www.freebsd.org">View Details &raquo;</a></p>
+    </div>
+
+    <div class="span6">
+      <p><b>大家正在说</b></p>
+      <hr>
+      <p><%= flash[:notice] %></p>
+      <h2>Most Watched</h2>
+      <p>The OpenBSD project produces a FREE, multi-platform 4.4BSD-based UNIX-like operating system. Our efforts emphasize portability, standardization, correctness, proactive security and integrated cryptography.</p>
+      <p><a class="btn" href="http://www.openbsd.org">View Details &raquo;</a></p>
+
+    </div>
+
+    <div class="span3">
+      <h2>Most Recent</h2>
+      <p>NetBSD is a free, fast, secure, and highly portable Unix-like Open Source operating system. It is available for a wide range of platforms, from large-scale servers and powerful desktop systems to handheld and embedded devices.</p>
+      <p><a class="btn" href="http://www.netbsd.org">View Details &raquo;</a></p>
+    </div>
+  </div>
+
+</div>

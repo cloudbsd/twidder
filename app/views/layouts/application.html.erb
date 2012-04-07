@@ -30,11 +30,14 @@
   <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <%= yield %>
     <%= debug params %>
     <hr>
+
     <footer>
-      <p>&copy; Company 2012</p>
+        &copy; Company 2012
+        <%= render 'shared/select_lang' %>
     </footer>
   </div> <!-- container -->
 
