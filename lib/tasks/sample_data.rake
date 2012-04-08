@@ -6,8 +6,8 @@ namespace :db do
     make_following_items
     make_group
     make_groups_users
+    make_microposts
   # make_microgroup
-  # make_microposts
   # make_projects
   # make_tags
   # make_posts
@@ -146,4 +146,49 @@ def make_groups_users
     end
   end
 end
+
+
+# ----------------------------------------------------------------------------
+# Micropost seed data
+# ----------------------------------------------------------------------------
+
+def make_microposts
+  print_title('setting up default microposts')
+
+  Micropost.delete_all
+
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  99.times do |n|
+    content = Faker::Lorem.sentence(5)
+    micropost = qi.microposts.create(content: content)
+    micropost.group_id = 0
+    micropost.save
+  # qi.microposts.create(content: content, group_id: 0)
+  end
+  print_content "New microposts by #{qi.name} created"
+
+  ritchie = User.find_by_email('ritchie.li@nebutown.com')
+  99.times do |n|
+    content = Faker::Lorem.sentence(5)
+    micropost = ritchie.microposts.create(content: content)
+    micropost.group_id = 0
+    micropost.save
+  # ritchie.microposts.create(content: content, group_id: 0)
+  end
+  print_content "New microposts by #{ritchie.name} created"
+
+# users = User.all(limit: 6)
+  users = User.all
+  20.times do
+    content = Faker::Lorem.sentence(5)
+    users.each do |user|
+      micropost = user.microposts.create(content: content)
+      micropost.group_id = 0
+      micropost.save
+    # user.microposts.create!(content: content, group_id: 0)
+    end
+  end
+  print_content "New microposts by all created"
+end
+
 

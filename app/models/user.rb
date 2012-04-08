@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
 # has_and_belongs_to_many :groups, foreign_key: 'user_id', class_name: 'Group', join_table: 'groups_users'
   has_and_belongs_to_many :groups
 
+# has_many :microposts,  dependent: :destroy
+  has_many :microposts,  dependent: :nullify
+
   def following?(other_user)
     self.followee_items.find_by_followee_id(other_user.id)
   end
