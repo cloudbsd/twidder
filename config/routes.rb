@@ -13,6 +13,7 @@ Twidder::Application.routes.draw do
     resources :microposts
 
     get "home/index"
+    get "home/test"
     authenticated :user do
       root :to => 'home#index'
     end

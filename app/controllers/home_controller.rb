@@ -12,4 +12,7 @@ class HomeController < ApplicationController
     @top10_users = User.limit(10)
   # @top10_groups = Group.limit(8)
   end
+
+  def test
+  end
 end
