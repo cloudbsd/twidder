@@ -4,6 +4,8 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     make_users
     make_following_items
+    make_group
+    make_groups_users
   # make_microgroup
   # make_microposts
   # make_projects
@@ -110,5 +112,39 @@ def make_group
                  description: strdesc)
   end
   puts '10 new groups created'
+end
+
+
+# ----------------------------------------------------------------------------
+# GroupsUsers seed data
+# ----------------------------------------------------------------------------
+
+def make_groups_users
+  GroupsUsers.delete_all
+
+  puts 'SETTING UP DEFAULT GROUP-USER ITEMS'
+
+  users = User.all[4..40]
+  user = users.first
+# user.groups.create!(name: 'xxx')
+  p user
+  p Group.first
+  user.groups << Group.first
+# group = Group.first
+
+# users = User.all
+# followers = users[4..40]
+
+# groups = Group.all
+
+# groups.each do |group|
+#   p group
+#   followers.each do |user|
+#     p user
+#     user.groups.create!(group_id: group.id)
+#   # group.users.create!(user_id: user.id)
+#   # group.users << user
+#   end
+# end
 end
 

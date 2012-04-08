@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120407183002) do
 
   create_table "following_items", :force => true do |t|
-    t.integer  "follower_id"
-    t.integer  "followee_id"
+    t.integer  "follower_id", :null => false
+    t.integer  "followee_id", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(:version => 20120407183002) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "groups_users", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "group_id",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "groups_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
   end
 
   add_index "groups_users", ["group_id"], :name => "index_groups_users_on_group_id"
@@ -55,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120407183002) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"
-    t.string   "nickname"
+    t.string   "name",                   :default => "", :null => false
+    t.string   "nickname",               :default => "", :null => false
     t.string   "gravatar"
   end
 

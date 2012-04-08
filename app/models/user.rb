@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   has_many :followees, through: :followee_items, source: :followee
   has_many :followers, through: :follower_items, source: :follower
 
-  has_and_belongs_to_many :groups, foreign_key: 'user_id', class_name: 'Group', join_table: 'groups_users'
+# has_and_belongs_to_many :groups, foreign_key: 'user_id', class_name: 'Group', join_table: 'groups_users'
+  has_and_belongs_to_many :groups
 
   def following?(other_user)
     self.followee_items.find_by_followee_id(other_user.id)
