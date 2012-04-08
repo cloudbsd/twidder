@@ -32,6 +32,7 @@ zh-CN:
     user_info:
       name: "姓名"
       email: "邮件"
+      microposts: "微博"
     follow_status:
       following: "关注"
       follower: "粉丝"

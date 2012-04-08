@@ -31,6 +31,7 @@ en:
     user_info:
       name: "Name"
       email: "Email"
+      microposts: "Microposts"
     follow_status:
       following: "Following"
       follower: "Follower"
