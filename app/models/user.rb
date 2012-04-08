@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
 # has_many :microposts,  dependent: :destroy
   has_many :microposts,  dependent: :nullify
 
+
+  def feed
+    Micropost.followees_by(self)
+  end
+
   def following?(other_user)
     self.followee_items.find_by_followee_id(other_user.id)
   end
