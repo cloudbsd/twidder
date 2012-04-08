@@ -15,6 +15,14 @@ namespace :db do
 end
 
 
+def print_title(title)
+  puts "== #{title}"
+end
+
+def print_content(content)
+  puts "   => #{content}"
+end
+
 # ----------------------------------------------------------------------------
 # User seed data
 # ----------------------------------------------------------------------------
@@ -22,7 +30,7 @@ end
 def make_users
   User.delete_all
 
-  puts 'SETTING UP DEFAULT USER LOGIN'
+  print_title('setting up default user')
 
   admin = User.create!(:name => 'admin',
                        :nickname => 'Administrator',
@@ -31,7 +39,7 @@ def make_users
                        :password => '888888',
                        :password_confirmation => '888888')
 # admin.toggle!(:admin)
-  puts 'New user created: ' << admin.nickname
+  print_content 'add user: ' << admin.nickname
 
   qi = User.create!(:name => 'qi',
                     :nickname => 'Qi Li',
@@ -40,7 +48,7 @@ def make_users
                     :password => '888888',
                     :password_confirmation => '888888')
 # qi.toggle!(:admin)
-  puts 'New user created: ' << qi.nickname
+  print_content 'add user: ' << qi.nickname
 
   ritchie = User.create!(:name => 'ritchie',
                          :nickname => 'Ritchie Li',
@@ -49,7 +57,7 @@ def make_users
                          :password => '888888',
                          :password_confirmation => '888888')
 # ritchie.toggle!(:admin)
-  puts 'New user created: ' << ritchie.nickname
+  print_content 'add user: ' << ritchie.nickname
 
   danny = User.create!(:name => 'danny',
                        :nickname => 'Danny Ren',
@@ -57,7 +65,7 @@ def make_users
                        :gravatar => 'user003.jpg',
                        :password => '888888',
                        :password_confirmation => '888888')
-  puts 'New user created: ' << danny.nickname
+  print_content 'add user: ' << danny.nickname
 
   50.times do |n|
     name = format "user%03d", n+1
@@ -72,7 +80,7 @@ def make_users
                  password: password,
                  password_confirmation: password)
   end
-  puts '50 new users created'
+  print_content 'add 50 new users'
 end
 
 
@@ -83,7 +91,7 @@ end
 def make_following_items
   FollowingItem.delete_all
 
-  puts 'SETTING UP DEFAULT FOLLOWING ITEM'
+  print_title('setting up default following items')
 
   users = User.all
   qi = User.find_by_email('cloudbsd@gmail.com')
@@ -101,7 +109,7 @@ end
 def make_group
   Group.delete_all
 
-  puts 'SETTING UP DEFAULT GROUP'
+  print_title('setting up default groups')
 
   # microgroups belong to Qi Li
   strdesc = %{Microgroup is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
@@ -109,9 +117,9 @@ def make_group
   10.times do |n|
     name = format "user%03d", n+1
     Group.create!(name: name,
-                 description: strdesc)
+                  description: strdesc)
   end
-  puts '10 new groups created'
+  print_content 'add 10 new groups'
 end
 
 
@@ -122,29 +130,20 @@ end
 def make_groups_users
   GroupsUsers.delete_all
 
-  puts 'SETTING UP DEFAULT GROUP-USER ITEMS'
+  print_title('setting up default group-user items')
 
-  users = User.all[4..40]
-  user = users.first
-# user.groups.create!(name: 'xxx')
-  p user
-  p Group.first
-  user.groups << Group.first
-# group = Group.first
+  users = User.all
+  followers = users[1..3]
 
-# users = User.all
-# followers = users[4..40]
+  groups = Group.all
 
-# groups = Group.all
-
-# groups.each do |group|
-#   p group
-#   followers.each do |user|
-#     p user
-#     user.groups.create!(group_id: group.id)
-#   # group.users.create!(user_id: user.id)
-#   # group.users << user
-#   end
-# end
+  groups.each do |group|
+    followers.each do |follower|
+      follower.groups << group
+    # follower.groups.create!(group_id: group.id)
+    # group.users.create!(user_id: user.id)
+    # group.users << user
+    end
+  end
 end
 
