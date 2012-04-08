@@ -1,0 +1,13 @@
+<tr>
+  <td class="gravatar">
+    <%= image_tag(top10_user.gravatar, size: '20x20') %>
+  </td>
+  <td class="micropost">
+    <span class="user">
+      <%= link_to top10_user.nickname, top10_user %>
+    </span>
+  </td>
+  <td class="actions">
+    <%= top10_user.microposts.count %>
+  </td>
+</tr>

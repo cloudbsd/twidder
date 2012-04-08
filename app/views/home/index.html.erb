@@ -10,7 +10,13 @@
   <div class="row">
     <div class="span3">
       <p><b>这些人正在用微博</b></p>
-      <p> </p>
+      <p>
+      <% unless @recent_users.empty? %>
+        <% @recent_users.each do |user| %>
+          <%= link_to(image_tag(user.gravatar, size: "40x40"), user) %>
+        <% end %>
+      <% end %>
+      </p>
       <hr>
       <h2>Most Forked</h2>
       <p> FreeBSD® is an advanced operating system for modern server, desktop, and embedded computer platforms. FreeBSD's code base has undergone over thirty years of continuous development, improvement, and optimization.</p>
@@ -20,17 +26,27 @@
     <div class="span6">
       <p><b>大家正在说</b></p>
       <hr>
-      <p><%= flash[:notice] %></p>
-      <h2>Most Watched</h2>
-      <p>The OpenBSD project produces a FREE, multi-platform 4.4BSD-based UNIX-like operating system. Our efforts emphasize portability, standardization, correctness, proactive security and integrated cryptography.</p>
-      <p><a class="btn" href="http://www.openbsd.org">View Details &raquo;</a></p>
+      <p>
+      <% if @recent_microposts.any? %>
+        <table class='microposts'>
+          <!-- below code doesn't work:
+          render @microposts -->
+          <%= render :partial => '/users/micropost', :collection => @recent_microposts %>
+        </table>
+      <% end %>
+      </p>
 
     </div>
 
     <div class="span3">
-      <h2>Most Recent</h2>
-      <p>NetBSD is a free, fast, secure, and highly portable Unix-like Open Source operating system. It is available for a wide range of platforms, from large-scale servers and powerful desktop systems to handheld and embedded devices.</p>
-      <p><a class="btn" href="http://www.netbsd.org">View Details &raquo;</a></p>
+      <p><h3>关注度 TOP 10</h3></p>
+      <hr>
+      <% if @top10_users.any? %>
+        <table class='table table-condensed'>
+          <%= render :partial => 'top10_user', object: @user, :collection => @top10_users %>
+        </table>
+      <% end %>
+      <p><%= flash[:notice] %></p>
     </div>
   </div>
 
