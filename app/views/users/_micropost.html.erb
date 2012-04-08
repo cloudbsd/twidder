@@ -1,0 +1,21 @@
+<tr>
+  <td class="gravatar">
+    <%= image_tag(micropost.user.gravatar, size: '50x50') %>
+  </td>
+  <td class="micropost">
+    <span class="user">
+      <%= link_to micropost.user.nickname, micropost.user %>
+    </span>
+    <span class="content"><%= micropost.content %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+  </td>
+  <% if is_current_user? micropost.user %>
+    <td class="actions">
+      <%= link_to 'Destroy', [micropost.group, micropost], confirm: 'Are you sure?', method: :delete %>
+    </td>
+  <% else %>
+    <td class="actions"></td>
+  <% end %>
+</tr>
