@@ -39,7 +39,7 @@ def make_users
                        :password => '888888',
                        :password_confirmation => '888888')
 # admin.toggle!(:admin)
-  print_content 'add user: ' << admin.nickname
+  print_content 'add_user: ' << admin.nickname
 
   qi = User.create!(:name => 'qi',
                     :nickname => 'Qi Li',
@@ -48,7 +48,7 @@ def make_users
                     :password => '888888',
                     :password_confirmation => '888888')
 # qi.toggle!(:admin)
-  print_content 'add user: ' << qi.nickname
+  print_content 'add_user: ' << qi.nickname
 
   ritchie = User.create!(:name => 'ritchie',
                          :nickname => 'Ritchie Li',
@@ -57,7 +57,7 @@ def make_users
                          :password => '888888',
                          :password_confirmation => '888888')
 # ritchie.toggle!(:admin)
-  print_content 'add user: ' << ritchie.nickname
+  print_content 'add_user: ' << ritchie.nickname
 
   danny = User.create!(:name => 'danny',
                        :nickname => 'Danny Ren',
@@ -65,7 +65,7 @@ def make_users
                        :gravatar => 'user003.jpg',
                        :password => '888888',
                        :password_confirmation => '888888')
-  print_content 'add user: ' << danny.nickname
+  print_content 'add_user: ' << danny.nickname
 
   50.times do |n|
     name = format "user%03d", n+1
@@ -80,7 +80,7 @@ def make_users
                  password: password,
                  password_confirmation: password)
   end
-  print_content 'add 50 new users'
+  print_content "add_user: 50 users created"
 end
 
 
@@ -119,7 +119,7 @@ def make_group
     Group.create!(name: name,
                   description: strdesc)
   end
-  print_content 'add 10 new groups'
+  print_content "add_group: 10 groups created"
 end
 
 
@@ -139,10 +139,8 @@ def make_groups_users
 
   groups.each do |group|
     followers.each do |follower|
-      follower.groups << group
-    # follower.groups.create!(group_id: group.id)
-    # group.users.create!(user_id: user.id)
-    # group.users << user
+      follower.join!(group)
+    # follower.groups << group
     end
   end
 end
@@ -160,35 +158,35 @@ def make_microposts
   qi = User.find_by_email('cloudbsd@gmail.com')
   99.times do |n|
     content = Faker::Lorem.sentence(5)
-    micropost = qi.microposts.create(content: content)
+    micropost = qi.microposts.build(content: content)
     micropost.group_id = 0
     micropost.save
   # qi.microposts.create(content: content, group_id: 0)
   end
-  print_content "New microposts by #{qi.name} created"
+  print_content "add_microposts: created by #{qi.nickname}"
 
   ritchie = User.find_by_email('ritchie.li@nebutown.com')
   99.times do |n|
     content = Faker::Lorem.sentence(5)
-    micropost = ritchie.microposts.create(content: content)
+    micropost = ritchie.microposts.build(content: content)
     micropost.group_id = 0
     micropost.save
   # ritchie.microposts.create(content: content, group_id: 0)
   end
-  print_content "New microposts by #{ritchie.name} created"
+  print_content "add_microposts: created by #{ritchie.nickname}"
 
 # users = User.all(limit: 6)
   users = User.all
   20.times do
     content = Faker::Lorem.sentence(5)
     users.each do |user|
-      micropost = user.microposts.create(content: content)
+      micropost = user.microposts.build(content: content)
       micropost.group_id = 0
       micropost.save
     # user.microposts.create!(content: content, group_id: 0)
     end
   end
-  print_content "New microposts by all created"
+  print_content "add_microposts: created by other users"
 end
 
 

@@ -1,6 +1,4 @@
 Twidder::Application.routes.draw do
-  resources :microposts
-
   scope '(:locale)' do
     devise_for :users
 
@@ -11,6 +9,8 @@ Twidder::Application.routes.draw do
     end
 
     resources :following_items, only: [:create, :destroy]
+
+    resources :microposts
 
     get "home/index"
     authenticated :user do

@@ -45,4 +45,11 @@ class User < ActiveRecord::Base
     self.followee_items.find_by_followee_id(other_user.id).destroy
   end
 
+  def join!(group)
+    self.groups << group
+  end
+
+  def unjoin!(group)
+    self.groups.delete group
+  end
 end
