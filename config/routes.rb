@@ -1,4 +1,6 @@
 Twidder::Application.routes.draw do
+  resources :microposts
+
   scope '(:locale)' do
     devise_for :users
 
