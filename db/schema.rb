@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20120407183002) do
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.integer "user_id",  :null => false
+    t.integer "group_id", :null => false
   end
 
   add_index "groups_users", ["group_id"], :name => "index_groups_users_on_group_id"
