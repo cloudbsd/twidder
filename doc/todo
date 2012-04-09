@@ -1,0 +1,42 @@
+2012.04.09 - 2012.04.15
+1. page flow (Danny)
+2. familar with bootstrap, use it (Ritchie)
+
+2012.04.16 - 2012.04.23
+1. code comment feature (Ritchie)
+
+
+Twidder Prototype
+
+done:
+  - micropost
+  - microgroup
+  - support admin account
+  - multiple languages
+  - project support microgroup
+
+working:
+  - use bootstrap in all page (1)
+  - ajax
+  - product layout and page flow (1) (google, douban, twitter, sina weibo, github)
+  - user management (1)
+
+features to add:
+* - browse source code
+* - add comments for source code (4)
+  - allow other account signing in
+  - search engine
+  - circle
+  - forward micropost
+  - blog and its comments
+* - project show and management (2)
+
+user interface:
+* - interface style (google and apple style)
+
+tests:
+* - unit test
+* - functional test
+* - integration test
+* - performance test
+
