@@ -1,21 +1,25 @@
-<% if user_signed_in? %>
-  <p class="navbar-text pull-right">
-  <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
-  </p>
-<% else %>
-  <p class="navbar-text pull-right">
-  <%= link_to t('login'), new_user_session_path %>
-<% end %>
+<ul class="nav pull-right">
+  <% if user_signed_in? %>
+    <li><%= link_to current_user.nickname, current_user %> </li>
+  <% end %>
 
-<% if user_signed_in? %>
-  <p class="navbar-text pull-right">
-  <%= link_to t('.profile'), edit_user_registration_path %>
-  </p>
-<% else %>
-  <p class="navbar-text pull-right">
-  <%= link_to t('signup'), new_user_registration_path %>
-  </p>
-<% end %>
-<% if user_signed_in? %>
-  <p class="navbar-text pull-right">Logged in as <%= link_to current_user.nickname, current_user %></p>
-<% end %>
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to t('.profile'), edit_user_registration_path %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to t('.signup'), new_user_registration_path %>
+    </li>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to t('.login'), new_user_session_path %>
+    </li>
+  <% end %>
+</ul>
