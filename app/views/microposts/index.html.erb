@@ -1,26 +1,11 @@
 <h1>Listing microposts</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>User</th>
-    <th>Group</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @microposts.each do |micropost| %>
-  <tr>
-    <td><%= micropost.content %></td>
-    <td><%= micropost.user %></td>
-    <td><%= micropost.group %></td>
-    <td><%= link_to 'Show', micropost %></td>
-    <td><%= link_to 'Edit', edit_micropost_path(micropost) %></td>
-    <td><%= link_to 'Destroy', micropost, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if @microposts.any? %>
+  <table class='microposts'>
+    <%= render :partial => '/users/micropost', :collection => @microposts %>
+  </table>
+  <%= will_paginate(@microposts, inner_window: 1, outer_window: 1) %>
 <% end %>
-</table>
 
 <br />
 

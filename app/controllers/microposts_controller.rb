@@ -2,7 +2,8 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.all
+  # @microposts = Micropost.all
+    @microposts = Micropost.paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html # index.html.erb

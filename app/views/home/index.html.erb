@@ -32,8 +32,6 @@
       <p>
       <% if @recent_microposts.any? %>
         <table class='microposts'>
-          <!-- below code doesn't work:
-          render @microposts -->
           <%= render :partial => '/users/micropost', :collection => @recent_microposts %>
         </table>
       <% end %>

@@ -17,8 +17,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @micropost = @user.microposts.build
   # @microposts = @user.microposts.paginate(page: params[:page], per_page: 20)
     @microposts = @user.feed.paginate(page: params[:page], per_page: 20)
+  # @microposts = @user.feed.page(params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
