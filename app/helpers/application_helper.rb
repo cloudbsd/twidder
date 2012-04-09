@@ -14,8 +14,8 @@ module ApplicationHelper
     items << NavItem.new(t(".users"), users_path, "users" == params[:controller])
     items << NavItem.new(t(".microgroups"), '#', "microgroups" == params[:controller])
     items << NavItem.new(t(".microposts"), '#', "microposts" == params[:controller])
-    items << NavItem.new("Project", '#', "projects" == params[:controller])
-    items << NavItem.new("Blog", '#', "posts" == params[:controller])
+    items << NavItem.new(t(".projects"), '#', "projects" == params[:controller])
+    items << NavItem.new(t(".blogs"), '#', "posts" == params[:controller])
   end
 
   def form_error_messages!(object)

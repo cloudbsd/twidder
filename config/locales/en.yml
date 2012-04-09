@@ -14,6 +14,8 @@ en:
       users: "Users"
       microposts: "Microposts"
       microgroups: "Microgroups"
+      projects: "Explore"
+      blogs: "Blog"
     navuser:
       signup: "Sign up"
       login: "Login"

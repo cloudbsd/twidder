@@ -14,6 +14,8 @@ zh-CN:
       users: "用户"
       microposts: "微博"
       microgroups: "微群"
+      projects: "源码"
+      blogs: "博客"
     navuser:
       signup: "注册"
       login: "登录"
