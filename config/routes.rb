@@ -12,6 +12,8 @@ Twidder::Application.routes.draw do
 
     resources :microposts
 
+    resources :posts
+
     get "home/index"
     get "home/test"
     authenticated :user do
