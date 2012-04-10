@@ -1,6 +1,6 @@
 <h1>Listing posts</h1>
 
-<table>
+<table class='table'>
   <tr>
     <th>Title</th>
     <th>Content</th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= post.user %></td>
+    <td><%= post.author_name %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>

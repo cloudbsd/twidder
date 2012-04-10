@@ -10,7 +10,7 @@ namespace :db do
   # make_microgroup
   # make_projects
   # make_tags
-  # make_posts
+    make_posts
   end
 end
 
@@ -163,7 +163,7 @@ def make_microposts
     micropost.save
   # qi.microposts.create(content: content, group_id: 0)
   end
-  print_content "add_microposts: created by #{qi.nickname}"
+  print_content "add_micropost: created by #{qi.nickname}"
 
   ritchie = User.find_by_email('ritchie.li@nebutown.com')
   99.times do |n|
@@ -173,7 +173,7 @@ def make_microposts
     micropost.save
   # ritchie.microposts.create(content: content, group_id: 0)
   end
-  print_content "add_microposts: created by #{ritchie.nickname}"
+  print_content "add_micropost: created by #{ritchie.nickname}"
 
 # users = User.all(limit: 6)
   users = User.all
@@ -186,7 +186,33 @@ def make_microposts
     # user.microposts.create!(content: content, group_id: 0)
     end
   end
-  print_content "add_microposts: created by other users"
+  print_content "add_micropost: created by other users"
 end
 
+
+# ----------------------------------------------------------------------------
+# Post seed data
+# ----------------------------------------------------------------------------
+
+def make_posts
+  print_title('setting up default microposts')
+
+  Post.delete_all
+
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  for i in 1..10 do
+    str_title = "Github Post #{i}"
+    str_content = %{At GitHub, we're constantly creating and using Pull Requests. They're an indispensable tool in our internal workflow, and a key part of making open source project management with GitHub so great. We're excited to make using them easier!}
+    qi.posts.create(title: str_title, content: str_content)
+  end
+  print_content "add_post: 10 posts created by #{qi.nickname}"
+
+  ritchie = User.find_by_email('ritchie.li@nebutown.com')
+  for i in 1..10 do
+    str_title = "Jake Douglas is a GitHubber Title #{i}"
+    str_content = %{Today Jake Douglas joins us as a GitHubber. Jake is going to be helping us squeeze as much performance as we can out of our backend systems. We're really excited to have him and we can't wait to see what he comes up with.}
+    ritchie.posts.create(title: str_title, content: str_content)
+  end
+  print_content "add_post: 10 posts created by #{ritchie.nickname}"
+end
 
