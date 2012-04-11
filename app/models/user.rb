@@ -30,11 +30,11 @@ class User < ActiveRecord::Base
 # has_and_belongs_to_many :groups, foreign_key: 'user_id', class_name: 'Group', join_table: 'groups_users'
   has_and_belongs_to_many :groups
 
-# has_many :microposts,  dependent: :destroy
   has_many :microposts,  dependent: :nullify
 
   # user <==> post relationship
-  has_many :posts,  :dependent => :nullify
+  has_many :posts, dependent: :nullify
+  has_many :comments, dependent: :nullify
 
   def feed
     Micropost.followees_by(self)

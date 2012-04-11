@@ -1,9 +1,10 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
-
   validates :title, presence: true, length: { minimum: 6 }
   validates :content, presence: true, length: { minimum: 6 }
-  validates :user_id, presence: true
+  validates :user, presence: true
+
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 
   def author_name
     if self.user
