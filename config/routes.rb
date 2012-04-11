@@ -12,7 +12,9 @@ Twidder::Application.routes.draw do
 
     resources :microposts
 
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
 
     get "home/index"
     get "home/test"
