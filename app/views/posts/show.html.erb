@@ -18,3 +18,15 @@
 
 <%= link_to_if is_current_user?(@post.user), 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<hr>
+
+<h4>Comments</h4>
+<br />
+<%= render @post.comments %>
+
+<hr>
+
+<h4>Add a comment:</h4>
+<br />
+<%= render 'comments/form' %>
