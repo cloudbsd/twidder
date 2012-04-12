@@ -2,6 +2,7 @@ Twidder::Application.routes.draw do
   scope '(:locale)' do
     devise_for :users
 
+    get "users/mine"
     resources :users, :only => [:index, :show, :destroy] do
       member do
         get :followees, :followers
@@ -10,7 +11,7 @@ Twidder::Application.routes.draw do
 
     resources :following_items, only: [:create, :destroy]
 
-    resources :microposts
+    resources :microposts, only: [:index, :new, :create, :destroy]
 
     resources :posts do
       resources :comments

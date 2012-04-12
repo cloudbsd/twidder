@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :only => [:show, :followees, :followers]
+  before_filter :authenticate_user!, :only => [:mine]
 
   # GET /users
   # GET /users.json
@@ -15,12 +15,23 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
+  def mine
+    @user = current_user
+    @micropost = @user.microposts.build
+    @microposts = @user.feed.paginate(page: params[:page], per_page: 20)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  # GET /users/1
+  # GET /users/1.json
   def show
     @user = User.find(params[:id])
     @micropost = @user.microposts.build
-  # @microposts = @user.microposts.paginate(page: params[:page], per_page: 20)
-    @microposts = @user.feed.paginate(page: params[:page], per_page: 20)
-  # @microposts = @user.feed.page(params[:page])
+    @microposts = @user.microposts.page(params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
