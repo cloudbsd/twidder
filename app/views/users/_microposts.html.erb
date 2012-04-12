@@ -1,0 +1,8 @@
+<% if @microposts.any? %>
+  <table class='table-microposts table'>
+    <!-- below code doesn't work:
+    render @microposts -->
+    <%= render :partial => 'micropost', :collection => @microposts %>
+  </table>
+  <%= will_paginate(@microposts, inner_window: 1, outer_window: 1) %>
+<% end %>

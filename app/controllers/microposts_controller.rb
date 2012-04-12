@@ -29,14 +29,15 @@ class MicropostsController < ApplicationController
   def create
   # @micropost = Micropost.new(params[:micropost])
     @micropost = current_user.microposts.build(params[:micropost])
-  # @micropost.group_id = 0
-    @group = nil
+    @micropost.group_id = 0
+  # @group = nil
 
     respond_to do |format|
       if @micropost.save
         format.html { redirect_to users_mine_path, notice: 'Micropost was successfully created.' }
       # format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-      # format.json { render json: @micropost, status: :created, location: @micropost }
+        format.js
+        format.json { render json: @micropost, status: :created, location: @micropost }
       else
         format.html { render action: "new" }
         format.json { render json: @micropost.errors, status: :unprocessable_entity }
@@ -52,6 +53,7 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to microposts_url }
+      format.js
       format.json { head :no_content }
     end
   end

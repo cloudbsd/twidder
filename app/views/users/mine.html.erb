@@ -1,22 +1,19 @@
 <div class="content">
 
   <p>
-  <%= image_tag(@user.gravatar, size: "150x150") %>
-  <%= render 'micropost_form' %>
+  <% if user_signed_in? %>
+    <h1 class="micropost">What's up?</h1>
+    <%= render 'micropost_form' %>
+  <% end %>
   </p>
 
   <hr>
 
   <div class="row">
     <div class="span8">
-      <% if @microposts.any? %>
-        <table class='table-microposts table'>
-          <!-- below code doesn't work:
-          render @microposts -->
-          <%= render :partial => 'micropost', :collection => @microposts %>
-        </table>
-        <%= will_paginate(@microposts, inner_window: 1, outer_window: 1) %>
-      <% end %>
+      <div class="microposts">
+        <%= render :partial => 'microposts' %>
+      </div>
     </div>
 
     <div class="span1">&nbsp;</div>
