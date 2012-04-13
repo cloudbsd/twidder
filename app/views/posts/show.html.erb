@@ -23,10 +23,14 @@
 
 <h4>Comments</h4>
 <br />
-<%= render @post.comments %>
+<div id="comments">
+  <%= render @post.comments %>
+</div>
 
 <hr>
 
 <h4>Add a comment:</h4>
 <br />
-<%= render 'comments/form' %>
+<div id="new_comment">
+  <%= render 'comments/form' %>
+</div>

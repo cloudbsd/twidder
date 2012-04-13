@@ -1,3 +1,9 @@
+<% if comment == @current_comment %>
+  <div id="current_comment">
+<% else %>
+  <div>
+<% end %>
+
 <p>
   <b>Commenter:</b>
   <%= comment.user.nickname %>
@@ -7,7 +13,9 @@
   <%= comment.body %>
 </p>
 
+</div>
+
 <p>
 <%= link_to 'Destroy Comment', [comment.post, comment],
-  confirm: 'Are you sure?', method: :delete %>
+  confirm: 'Are you sure?', method: :delete, remote: true %>
 </p>
