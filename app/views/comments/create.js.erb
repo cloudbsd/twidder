@@ -1,4 +1,4 @@
 $('#notice').html("<%=j render :text => "#{notice}" %>");
-$('#comments').html("<%=j render @post.comments %>");
+$('#comments').html("<%=j render 'posts/comments' %>");
 $('#new_comment').html("<%=j render 'comments/form' %>");
 $('#current_comment').css({'background-color':'#55cc55'}).animate({'background-color':'#ffffff'}, 1000);

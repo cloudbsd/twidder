@@ -4,18 +4,24 @@
   <div>
 <% end %>
 
-<p>
-  <b>Commenter:</b>
-  <%= comment.user.nickname %>
-</p>
-<p>
-  <b>Comment:</b>
-  <%= comment.body %>
-</p>
+<tr>
+  <td class="comment">
+    <span class="user">
+      <%= link_to comment.user.nickname, comment.user %>
+    </span>
+    <span class="content"><%= comment.body %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    </span>
+  </td>
+  <% if is_current_user? comment.user %>
+    <td class="actions">
+      <%= link_to 'Destroy', [comment.post, comment],
+        confirm: 'Are you sure?', method: :delete, remote: true %>
+    </td>
+  <% else %>
+    <td class="actions"></td>
+  <% end %>
+</tr>
 
 </div>
-
-<p>
-<%= link_to 'Destroy Comment', [comment.post, comment],
-  confirm: 'Are you sure?', method: :delete, remote: true %>
-</p>
