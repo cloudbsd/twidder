@@ -1,8 +1,10 @@
+<% @microposts = current_user.feed.paginate(page: params[:page], per_page: 20) %>
+
 <% if @microposts.any? %>
   <table class='table-microposts table'>
     <!-- below code doesn't work:
     render @microposts -->
-    <%= render :partial => 'micropost', :collection => @microposts %>
+    <%= render :partial => 'users/micropost', :collection => @microposts %>
   </table>
   <%= will_paginate(@microposts, inner_window: 1, outer_window: 1) %>
 <% end %>

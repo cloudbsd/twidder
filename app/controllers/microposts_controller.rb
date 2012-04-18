@@ -35,7 +35,6 @@ class MicropostsController < ApplicationController
     respond_to do |format|
       if @micropost.save
         format.html { redirect_to users_mine_path, notice: 'Micropost was successfully created.' }
-      # format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
         format.js
         format.json { render json: @micropost, status: :created, location: @micropost }
       else
