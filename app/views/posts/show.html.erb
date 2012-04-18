@@ -27,6 +27,7 @@
     <%= render 'comments' %>
 </div>
 
+<% if user_signed_in? %>
 <hr>
 
 <h4>Add a comment:</h4>
@@ -34,3 +35,4 @@
 <div id="new_comment">
   <%= render 'comments/form' %>
 </div>
+<% end %>
