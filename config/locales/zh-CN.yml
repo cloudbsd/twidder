@@ -44,6 +44,9 @@ zh-CN:
     follow_form:
       follow: "关注"
       unfollow: "取消关注"
+    micropost:
+      destroy: "删除"
+      are_you_sure: "你确定吗？"
 
   following_items:
     create:

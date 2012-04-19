@@ -43,6 +43,9 @@ en:
     follow_form:
       follow: "Follow"
       unfollow: "Unfollow"
+    micropost:
+      destroy: "Destroy"
+      are_you_sure: "Are you sure?"
 
   following_items:
     create:

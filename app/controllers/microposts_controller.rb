@@ -35,7 +35,7 @@ class MicropostsController < ApplicationController
     respond_to do |format|
       if @micropost.save
         format.html { redirect_to users_mine_path, notice: 'Micropost was successfully created.' }
-        format.js
+        format.js   { @microposts = current_user.feed.paginate(page: params[:page], per_page: 20) }
         format.json { render json: @micropost, status: :created, location: @micropost }
       else
         format.html { render action: "new" }
@@ -52,7 +52,7 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to microposts_url }
-      format.js
+      format.js   { @microposts = current_user.feed.paginate(page: params[:page], per_page: 20) }
       format.json { head :no_content }
     end
   end
