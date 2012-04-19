@@ -32,6 +32,8 @@ zh-CN:
   users:
     index:
       title: "用户列表"
+    mine:
+      newtitle: "发微博"
     user_info:
       name: "姓名"
       email: "邮件"

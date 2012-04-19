@@ -31,6 +31,8 @@ en:
   users:
     index:
       title: "Listing users"
+    mine:
+      newtitle: "What's up?"
     user_info:
       name: "Name"
       email: "Email"

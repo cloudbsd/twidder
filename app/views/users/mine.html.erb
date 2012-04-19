@@ -2,7 +2,7 @@
 
   <p>
   <% if user_signed_in? %>
-    <h1 class="micropost">What's up?</h1>
+    <h1 class="micropost"><%= t('.newtitle') %></h1>
     <div id="new_micropost">
       <%= render 'micropost_form' %>
     </div>

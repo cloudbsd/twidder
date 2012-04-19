@@ -1,3 +1,4 @@
+<% @microposts = current_user.feed.paginate(page: params[:page], per_page: 20) %>
 $('#notice').html("<%=j render :text => "#{notice}" %>");
 $('#microposts').html("<%=j render 'users/microposts' %>");
 $('#new_micropost').html("<%=j render 'users/micropost_form' %>");
