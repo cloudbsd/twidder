@@ -1,0 +1,29 @@
+<h1>Listing microgroups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Owner</th>
+    <th>Group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @microgroups.each do |microgroup| %>
+  <tr>
+    <td><%= microgroup.name %></td>
+    <td><%= microgroup.description %></td>
+    <td><%= microgroup.owner %></td>
+    <td><%= microgroup.group %></td>
+    <td><%= link_to 'Show', microgroup %></td>
+    <td><%= link_to 'Edit', edit_microgroup_path(microgroup) %></td>
+    <td><%= link_to 'Destroy', microgroup, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Microgroup', new_microgroup_path %>

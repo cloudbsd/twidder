@@ -13,6 +13,8 @@ Twidder::Application.routes.draw do
 
     resources :microposts, only: [:index, :new, :create, :destroy]
 
+    resources :microgroups
+
     resources :posts do
       resources :comments
     end
