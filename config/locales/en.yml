@@ -38,6 +38,7 @@ en:
       email: "Email"
       microposts: "Microposts"
     follow_status:
+      microposts: "Microposts"
       following: "Following"
       follower: "Follower"
     follow_form:
@@ -56,3 +57,9 @@ en:
     destroy:
       following: "Following"
       follower: "Follower"
+
+  microposts:
+    create:
+      microposts: "Microposts"
+    destroy:
+      microposts: "Microposts"

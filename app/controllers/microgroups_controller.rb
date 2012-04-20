@@ -14,6 +14,11 @@ class MicrogroupsController < ApplicationController
   # GET /microgroups/1.json
   def show
     @microgroup = Microgroup.find(params[:id])
+    @users = @microgroup.group.users
+    @micropost = @microgroup.group.microposts.build
+  # @microposts = @microgroup.microposts
+    @microposts = @microgroup.group.microposts.paginate(page: params[:page], per_page: 10)
+  # @users = User.paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html # show.html.erb

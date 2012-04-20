@@ -1,25 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="content">
 
-<p>
-  <b>Name:</b>
-  <%= @microgroup.name %>
-</p>
+<div class="row">
+  <div class="span2">
+    <%= render 'sidebar' %>
+  </div> <!-- span2 -->
 
-<p>
-  <b>Description:</b>
-  <%= @microgroup.description %>
-</p>
+  <div class="span7">
 
-<p>
-  <b>Owner:</b>
-  <%= @microgroup.owner %>
-</p>
-
-<p>
-  <b>Group:</b>
-  <%= @microgroup.group %>
-</p>
+    <!-- microgroup summary -->
+    <p id="notice"><%= notice %></p>
+    <p> <b>Name:</b> <%= @microgroup.name %> </p>
+    <p> <b>Description:</b> <%= @microgroup.description %> </p>
+    <p> <b>Owner:</b> <%= @microgroup.owner.nickname %> </p>
+    <p> <b>Group:</b> <%= @microgroup.group.name %> </p>
 
 
-<%= link_to 'Edit', edit_microgroup_path(@microgroup) %> |
-<%= link_to 'Back', microgroups_path %>
+    <%= link_to 'Edit', edit_microgroup_path(@microgroup) %> |
+    <%= link_to 'Back', microgroups_path %>
+
+    <hr>
+
+    <!-- micropost form -->
+    <% if user_signed_in? %>
+      <h1 class="micropost">What's up?</h1>
+      <%= render 'users/micropost_form' %>
+    <% end %>
+    <!-- equal to below code:
+    render partial: 'shared/micropost_form' if user_signed_in? -->
+
+    <!-- microposts belong to the current microgroup -->
+    <div id='microposts'>
+      <%= render 'users/microposts' %>
+    </div>
+
+  </div> <!-- span7 -->
+
+  <div class="span3">
+    <p>
+    <b>Owner:</b>
+    <%= link_to @microgroup.owner.nickname, @microgroup.owner %>
+    </p>
+
+    <br />
+
+    <p>
+    <b>Members:</b>
+    <%= @microgroup.group.users.count %>
+    </p>
+    <% unless @microgroup.group.users.empty? %>
+      <% @microgroup.group.users.each do |user| %>
+        <%= link_to(image_tag(user.gravatar, size: "30x30"), user) %>
+      <% end %>
+    <% end %>
+
+    <br />
+    <br />
+    <br />
+
+    <%= render 'sidebar' %>
+  </div> <!-- span3 -->
+
+</div>

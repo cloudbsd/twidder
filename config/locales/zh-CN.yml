@@ -33,12 +33,13 @@ zh-CN:
     index:
       title: "用户列表"
     mine:
-      newtitle: "发微博"
+      newtitle: "新微博"
     user_info:
       name: "姓名"
       email: "邮件"
       microposts: "微博"
     follow_status:
+      microposts: "微博"
       following: "关注"
       follower: "粉丝"
     follow_form:
@@ -48,7 +49,7 @@ zh-CN:
       destroy: "删除"
       are_you_sure: "你确定吗？"
     micropost_form:
-      submit: "发 布"
+      submit: "发微博"
 
   following_items:
     create:
@@ -57,3 +58,9 @@ zh-CN:
     destroy:
       following: "关注"
       follower: "粉丝"
+
+  microposts:
+    create:
+      microposts: "微博"
+    destroy:
+      microposts: "微博"
