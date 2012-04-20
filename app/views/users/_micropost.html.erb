@@ -13,7 +13,11 @@
   </td>
   <% if is_current_user? micropost.user %>
     <td class="actions">
-      <%= link_to t('.destroy'), [micropost.group, micropost], confirm: t('.are_you_sure'), method: :delete, remote: true %>
+      <% if micropost.group_id == 0 %>
+        <%= link_to t('.destroy'), [micropost.group, micropost], confirm: t('.are_you_sure'), method: :delete, remote: true %>
+      <% else %>
+        <%= link_to t('.destroy'), [micropost.group.microgroup, micropost], confirm: t('.are_you_sure'), method: :delete, remote: true %>
+      <% end %>
     </td>
   <% else %>
     <td class="actions"></td>

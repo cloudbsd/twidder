@@ -11,9 +11,6 @@
     <p id="notice"><%= notice %></p>
     <p> <b>Name:</b> <%= @microgroup.name %> </p>
     <p> <b>Description:</b> <%= @microgroup.description %> </p>
-    <p> <b>Owner:</b> <%= @microgroup.owner.nickname %> </p>
-    <p> <b>Group:</b> <%= @microgroup.group.name %> </p>
-
 
     <%= link_to 'Edit', edit_microgroup_path(@microgroup) %> |
     <%= link_to 'Back', microgroups_path %>

@@ -14,6 +14,7 @@ class MicrogroupsController < ApplicationController
   # GET /microgroups/1.json
   def show
     @microgroup = Microgroup.find(params[:id])
+  # @group = @microgroup.group
     @users = @microgroup.group.users
     @micropost = @microgroup.group.microposts.build
   # @microposts = @microgroup.microposts
