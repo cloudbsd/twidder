@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
 
   has_many :microposts,  dependent: :nullify
 
+  has_many :microgroups, foreign_key: 'owner_id',  :dependent => :nullify
+
   # user <==> post relationship
   has_many :posts, dependent: :nullify
   has_many :comments, dependent: :nullify

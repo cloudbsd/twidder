@@ -133,14 +133,13 @@ def make_groups_users
   print_title('setting up default group-user items')
 
   users = User.all
-  followers = users[1..3]
+  followers = users[5..20]
 
   groups = Group.all
 
   groups.each do |group|
     followers.each do |follower|
       follower.join!(group)
-    # follower.groups << group
     end
   end
 end
@@ -187,6 +186,54 @@ def make_microposts
     end
   end
   print_content "add_micropost: created by other users"
+end
+
+
+# ----------------------------------------------------------------------------
+# Microgroup seed data
+# ----------------------------------------------------------------------------
+
+def make_microgroup
+  print_title('setting up default microgroups')
+
+  Microgroup.delete_all
+
+  users = User.all
+  grp_users = users[3..40]
+
+  # microgroups belong to Qi Li
+  strdesc = %{Microgroup is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
+
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  for i in 1..10 do
+    name = "Qi Microgroup #{i}";
+    description = strdesc
+    grp = qi.microgroups.create(name: name, description: strdesc)
+    grp_users.each do |user|
+      # add use into the microgroup
+      grp.users << user
+
+      # user create micropost belonging to the microgroup
+      content = Faker::Lorem.sentence(5)
+      micropost = user.microposts.build(content: content)
+      micropost.microgroup = grp
+      micropost.save
+    # user.microposts.create(content: content, microgroup_id: grp.id)
+    end
+  end
+  puts "New microgroups by #{qi.name} created"
+
+  # microgroups belong to Ritchie Li
+  strdesc = %{At Microgroup, we're constantly creating and using Pull Requests. They're an indispensable tool in our internal workflow, and a key part of making open source project management with GitHub so great. We're excited to make using them easier!}
+
+  ritchie = User.find_by_email('ritchie.li@nebutown.com')
+  for i in 11..20 do
+    name = "Ritchie Microgroup #{i}";
+    description = strdesc
+    grp = ritchie.microgroups.create(name: name, description: strdesc)
+    grp_users.each { |user| grp.users << user }
+  end
+  puts "New microgroups by #{ritchie.name} created"
 end
 
 

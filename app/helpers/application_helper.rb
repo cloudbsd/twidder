@@ -14,7 +14,7 @@ module ApplicationHelper
     items << NavItem.new(t(".home"), users_mine_path, "users" == params[:controller] && "mine" == params[:action])
     items << NavItem.new(t(".users"), users_path, "users" == params[:controller] && "index" == params[:action])
     items << NavItem.new(t(".microposts"), microposts_path, "microposts" == params[:controller])
-    items << NavItem.new(t(".microgroups"), '#', "microgroups" == params[:controller])
+    items << NavItem.new(t(".microgroups"), microgroups_path, "microgroups" == params[:controller])
     items << NavItem.new(t(".projects"), '#', "projects" == params[:controller])
     items << NavItem.new(t(".blogs"), posts_path, "posts" == params[:controller])
   end
