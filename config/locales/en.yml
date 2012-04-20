@@ -46,6 +46,8 @@ en:
     micropost:
       destroy: "Destroy"
       are_you_sure: "Are you sure?"
+    micropost_form:
+      submit: "Submit"
 
   following_items:
     create:

@@ -47,6 +47,8 @@ zh-CN:
     micropost:
       destroy: "删除"
       are_you_sure: "你确定吗？"
+    micropost_form:
+      submit: "发 布"
 
   following_items:
     create:
