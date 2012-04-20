@@ -1,29 +1,49 @@
-<h1>Listing microgroups</h1>
+<div class="content">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Owner</th>
-    <th>Group</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="span3">
+    <%= link_to 'New Microgroup', new_microgroup_path, class: "btn btn-primary" %>
+    <br />
+    <br />
+    <%= render 'sidebar' %>
+    <%= render 'sidebar' %>
+  </div> <!-- span3 -->
 
-<% @microgroups.each do |microgroup| %>
-  <tr>
-    <td><%= microgroup.name %></td>
-    <td><%= microgroup.description %></td>
-    <td><%= microgroup.owner %></td>
-    <td><%= microgroup.group %></td>
-    <td><%= link_to 'Show', microgroup %></td>
-    <td><%= link_to 'Edit', edit_microgroup_path(microgroup) %></td>
-    <td><%= link_to 'Destroy', microgroup, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="span9">
 
-<br />
+    <div class="microgroups">
+      <h1 class="microgroups">Listing microgroups</h1>
+    </div>
 
-<%= link_to 'New Microgroup', new_microgroup_path %>
+    <table class="microgroups">
+    <% @microgroups.each do |microgroup| %>
+      <tr>
+        <td class='microgroup_gravatar'>
+          <%= image_tag(microgroup.owner.gravatar, size: '80x80') %><br />
+          <%= link_to microgroup.owner.nickname, microgroup.owner %>
+        </td>
+
+        <td class='microgroup_description'>
+          <dl>
+            <dt><%= microgroup.name %></dt>
+            <dd><%= truncate(microgroup.description, length: 300) %></dd>
+          </dl>
+        </td>
+
+        <td class='microgroup_actions'>
+          <%= link_to 'Show', microgroup %><br />
+          <% if is_current_user? microgroup.owner %>
+            <%= link_to 'Edit', edit_microgroup_path(microgroup) %><br />
+            <%= link_to 'Destroy', microgroup, confirm: 'Are you sure?', method: :delete %>
+          <% end %>
+      </td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+  </div> <!-- span9 -->
+</div> <!-- row -->
+
+</div>
