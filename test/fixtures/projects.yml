@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  path: MyString
+  gravatar: MyString
+  owner: 
+  group: 
+
+two:
+  name: MyString
+  description: MyText
+  path: MyString
+  gravatar: MyString
+  owner: 
+  group: 

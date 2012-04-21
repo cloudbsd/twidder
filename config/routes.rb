@@ -17,6 +17,8 @@ Twidder::Application.routes.draw do
       resources :microposts, only: [:create, :destroy]
     end
 
+    resources :projects
+
     resources :posts do
       resources :comments
     end
