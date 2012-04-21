@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
-  belongs_to :owner
+  validates :name, presence: true, uniqueness: true, length: { :maximum => 50 }
+  validates :path, presence: true, uniqueness: true
+
+  belongs_to :owner, class_name: 'User'
   belongs_to :group
 end

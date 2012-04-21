@@ -4,4 +4,5 @@ class Group < ActiveRecord::Base
 
   has_many :microposts, dependent: :nullify
   has_one :microgroup, dependent: :nullify
+  has_one :project, dependent: :nullify
 end
