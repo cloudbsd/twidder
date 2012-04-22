@@ -7,8 +7,8 @@ namespace :db do
     make_group
     make_groups_users
     make_microposts
-    make_microgroup
-  # make_projects
+    make_microgroups
+    make_projects
   # make_tags
     make_posts
   end
@@ -115,10 +115,9 @@ def make_group
   # microgroups belong to Qi Li
   strdesc = %{Microgroup is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
 
-  10.times do |n|
+  20.times do |n|
     name = format "user%03d", n+1
-    Group.create!(name: name,
-                  description: strdesc)
+    Group.create!(name: name, description: strdesc)
   end
   print_content "add_group: 10 groups created"
 end
@@ -194,7 +193,7 @@ end
 # Microgroup seed data
 # ----------------------------------------------------------------------------
 
-def make_microgroup
+def make_microgroups
   print_title('setting up default microgroups')
 
   Microgroup.delete_all
@@ -222,17 +221,66 @@ def make_microgroup
     print_content "add_micropost: #{grp.users.count} microposts are created by \"#{qi.nickname}\" and Group \"#{grp.name}\"", 2
   end
 
-# # microgroups belong to Ritchie Li
-# strdesc = %{At Microgroup, we're constantly creating and using Pull Requests. They're an indispensable tool in our internal workflow, and a key part of making open source project management with GitHub so great. We're excited to make using them easier!}
+  # microgroups belong to Ritchie Li
+  strdesc = %{At Microgroup, we're constantly creating and using Pull Requests. They're an indispensable tool in our internal workflow, and a key part of making open source project management with GitHub so great. We're excited to make using them easier!}
 
-# ritchie = User.find_by_email('ritchie.li@nebutown.com')
-# for i in 11..20 do
-#   name = "Ritchie Microgroup #{i}";
-#   description = strdesc
-#   grp = ritchie.microgroups.create(name: name, description: strdesc)
-#   grp_users.each { |user| grp.users << user }
-# end
-# puts "New microgroups by #{ritchie.name} created"
+  ritchie = User.find_by_email('ritchie.li@nebutown.com')
+  for i in 11..20 do
+    name = "Ritchie Microgroup #{i}";
+    grp = Group.find(i)
+    mgrp = ritchie.microgroups.create(name: name, description: strdesc, group_id: grp.id)
+    print_content "add_microgroup: created by #{ritchie.nickname}"
+    grp.users.each do |user|
+      # user create micropost belonging to the microgroup
+      content = Faker::Lorem.sentence(5)
+      micropost = user.microposts.build(content: content)
+      micropost.group_id = i
+      micropost.save
+    # user.microposts.create(content: content, microgroup_id: grp.id)
+    end
+    print_content "add_micropost: #{grp.users.count} microposts are created by \"#{ritchie.nickname}\" and Group \"#{grp.name}\"", 2
+  end
+end
+
+
+# ----------------------------------------------------------------------------
+# Project seed data
+# ----------------------------------------------------------------------------
+
+def do_make_project(user, name, strdesc, strpath, strgravatar)
+  grp = Group.create!(name: name, description: strdesc)
+  prj = user.projects.create(name: name, description: strdesc, path: strpath, group: grp, gravatar: strgravatar)
+  print_content "add_project: #{prj.name} created by #{user.nickname}"
+end
+
+def make_projects
+  print_title('setting up default projects')
+
+  Project.delete_all
+
+  # CruiseControl.rb Project
+  cc_name = 'CruiseControl.rb';
+  cc_desc = %{CruiseControl.rb is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
+  cc_path = '/Users/liqi/github/cruisecontrol.rb'
+
+  qi = User.find_by_email('cloudbsd@gmail.com')
+
+  prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'user001.jpg')
+
+  # Msgpack Project
+  msg_name = 'Msgpack';
+  msg_desc = %{MessagePack is a binary-based efficient object serialization library. It enables to exchange structured objects between many languages like JSON. But unlike JSON, it is very fast and small.}
+  msg_path = '/Users/liqi/github/msgpack'
+
+  prj = do_make_project(qi, msg_name, msg_desc, msg_path, 'user002.jpg')
+
+  for i in 1..7 do
+    strname = msg_name + i.to_s
+    strdesc = msg_desc
+    strpath = msg_path + i.to_s
+    gravatar = format "user%03d.jpg", i
+    prj = do_make_project(qi, strname, strdesc, strpath, gravatar)
+  end
 end
 
 
