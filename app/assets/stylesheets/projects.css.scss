@@ -1,3 +1,120 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.projects {
+  h1 {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font: 150% sans-serif;
+    color: #226;
+    border-bottom: 3px dotted #77d;
+  }
+
+  .entry {
+    overflow: auto;
+    margin-top: 1em;
+    border-bottom: 1px dotted #77d;
+    min-height: 100px;
+
+    img {
+      width: 80px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: absolute;
+    }
+
+    h3 {
+      font-size: 120%;
+      font-family: sans-serif;
+      margin-left: 100px;
+      margin-top: 0;
+      margin-bottom: 2px;
+      color: #227;
+    }
+
+    p, div.price_line {
+      margin-left: 100px;
+      margin-top: 0.5em;
+      margin-bottom: 0.8em;
+
+      form, div {
+        display: inline;
+      }
+    }
+
+    .price {
+      color: #44a;
+      font-weight: bold;
+      margin-right: 3em;
+    }
+
+    .action {
+      margin-left: 100px;
+      margin-right: 3em;
+      margin-bottom: 0.8em;
+    }
+  } // entry
+
+  table.projects {
+//  border-collapse: collapse;
+    margin-top: 1em;
+
+    tr th {
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      background: #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    tr {
+      min-height: 100px;
+//    border-bottom: 1px solid #ccc;
+      border-bottom: 1px dotted #77d;
+//    border-top: 1px dotted #ccc;
+
+      td.project_gravatar {
+        vertical-align: top;
+        padding: 10px;
+        width: 80px;
+//      height: 110px;
+
+        img {
+          width: 80px;
+        }
+      } // td
+
+      td.project_description {
+        vertical-align: top;
+        padding: 10px;
+
+        dl {
+          margin: 0px;
+//        background: #ddd;
+
+          dt {
+            color:        #227;
+            font-weight:  bold;
+            font-size:    larger;
+            margin-bottom: 1em;
+          }
+
+          dd {
+            margin: 0;
+          }
+        }
+      } // td.project_description
+
+      td.project_actions {
+        vertical-align: center;
+        padding: 10px;
+//      font-size: x-small;
+//      text-align: right;
+//      padding-left: 1em;
+      } // td.project_actions
+
+    } // tr
+
+  } // table
+}
