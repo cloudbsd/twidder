@@ -46,7 +46,10 @@ class MicrogroupsController < ApplicationController
   # POST /microgroups
   # POST /microgroups.json
   def create
-    @microgroup = Microgroup.new(params[:microgroup])
+  # @microgroup = Microgroup.new(params[:microgroup])
+    grp = Group.create!(name: params[:microgroup][:name], description: params[:microgroup][:description])
+    @microgroup = current_user.microgroups.build(params[:microgroup])
+    @microgroup.group = grp
 
     respond_to do |format|
       if @microgroup.save
