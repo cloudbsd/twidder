@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /projects
   # GET /projects.json
   def index
@@ -41,7 +43,10 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
+  # @project = Project.new(params[:project])
+    grp = Group.create!(name: params[:project][:name], description: params[:project][:description])
+    @project = current_user.projects.build(params[:project])
+    @project.group = grp
 
     respond_to do |format|
       if @project.save
