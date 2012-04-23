@@ -1,0 +1,16 @@
+<% ge = grit_entry_status(entry) %>
+<tr>
+  <% icon_file = ge.is_tree? ? 'dir.png' : 'txt.png' %>
+  <td><%= image_tag icon_file, :alt => 'entry icon' %></td>
+  <td>
+    <% if ge.is_tree? %>
+      <%= link_to entry.basename, tree_project_path(@project, 'tree', entry.name) %>
+    <% else %>
+      <%= link_to entry.basename, blob_project_path(@project, 'blob', entry.name) %>
+    <% end %>
+  </td>
+  <td><%= ge.size %></td>
+  <td><%= ge.author %></td>
+  <td><%= ge.date %></td>
+  <td><%= link_to 'Edit', edit_project_path(@project) %></td>
+</tr>

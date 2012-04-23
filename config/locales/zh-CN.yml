@@ -64,3 +64,11 @@ zh-CN:
       microposts: "微博"
     destroy:
       microposts: "微博"
+
+  projects:
+    show:
+      owner: "项目管理员"
+      name: "项目名称"
+      description: "项目描述"
+      edit: "编辑"
+      back: "返回"

@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    show_tree or return
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,6 +79,34 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to projects_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def show_tree
+    # get correct path for tree or blob
+    if (params[:tree] == 'blob')
+      @paths = params[:paths]
+    elsif (params[:tree] == 'tree')
+      @paths = params[:paths] ? (params[:paths].to_s + '/') : nil
+    end
+
+    # get entry list
+    begin
+      @repo = Grit::Repo.new(@project.path)
+      @contents = @repo.tree('master',@paths).contents
+      if (params[:tree] == 'blob')
+        @blob = @contents.first
+        redirect_to @project, notice: 'project blob path is wrong.' and return unless @blob
+      else
+        @blob = nil
+        @entries = @contents
+      end
+    rescue Grit::GitRuby::Repository::NoSuchPath
+      redirect_to @project, notice: 'project tree path is wrong.' and return
+    rescue
+      redirect_to @project and return
     end
   end
 end

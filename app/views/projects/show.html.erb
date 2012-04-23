@@ -1,12 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+<h3><a href='#'>twitter</a>/<a href='#'><%= @project.name %></a></h3>
+</p>
+
+<p>
+  <%= image_tag(@project.gravatar, size: "120x120") %>
+</p>
+
+<p>
+  <b><%= t('.owner') %>:</b>
+  <%= @project.owner.nickname %>
+</p>
+
+<p>
+  <b><%= t('.name') %>:</b>
   <%= @project.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= t('.description') %>:</b>
   <%= @project.description %>
 </p>
 
@@ -16,20 +29,39 @@
 </p>
 
 <p>
-  <b>Gravatar:</b>
-  <%= @project.gravatar %>
-</p>
-
-<p>
-  <b>Owner:</b>
-  <%= @project.owner %>
-</p>
-
-<p>
   <b>Group:</b>
-  <%= @project.group %>
+  <%= @project.group.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to t('.edit'), edit_project_path(@project) %> |
+<%= link_to t('.back'), projects_path %>
+
+
+<br />
+<br />
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+  <li><a href="#">Settings</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+<br />
+
+<!-- project path -->
+<%= render 'path' %>
+
+<% if @blob %>
+<!-- project file -->
+<pre class="prettyprint linenums">
+  <%= @blob.data %>
+</pre>
+<% else %>
+<!-- project entry list -->
+<%= render 'tree' %>
+<% end %>
+
+<br />
+<h4>project</h4>  <%= debug @project %>
+

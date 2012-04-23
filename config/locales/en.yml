@@ -63,3 +63,11 @@ en:
       microposts: "Microposts"
     destroy:
       microposts: "Microposts"
+
+  projects:
+    show:
+      owner: "Admin"
+      name: "Name"
+      description: "Description"
+      edit: "Edit"
+      back: "Back"

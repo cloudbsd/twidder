@@ -31,6 +31,15 @@ Twidder::Application.routes.draw do
     root :to => 'home#index'
   end
 
+    # Starting from Rails 3.1, wildcard routes will always
+    # match the optional format segment by default.
+    # to enable paths match all the characters, we set
+    #
+    # :format => false
+    #
+    match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :format => false
+    match 'projects/:id/:tree(/*paths)' => 'projects#show', :as => :tree_project, :constraints => { :tree => 'tree' }, :format => false
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

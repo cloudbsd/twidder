@@ -1,0 +1,30 @@
+<!-- project entry list -->
+<table class="table table-condensed">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Size</th>
+    <th>Author</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+
+  <% if @paths %>
+    <% ppaths = parent_path(@paths) %>
+    <tr>
+      <th></th>
+      <% if ppaths %>
+        <td><%= link_to_if @paths, "..", tree_project_path(@project, 'tree', ppaths) %></td>
+      <% else %>
+        <td><%= link_to_if @paths, "..", project_path(@project) %></td>
+      <% end %>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+
+  <%= render :partial => "entry", :collection => @entries %>
+
+</table>

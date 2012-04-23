@@ -43,9 +43,11 @@ gem 'jquery-rails'
 gem 'devise', '~> 2.0.0'
 gem 'devise-i18n'
 
+gem 'rails-i18n'
+
 gem 'faker'
 
-gem 'rails-i18n'
+gem 'grit'
 
 group :assets do
 # gem 'bootstrap-sass'
