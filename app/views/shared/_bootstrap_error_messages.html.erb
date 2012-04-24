@@ -3,9 +3,10 @@
   <% sentence = I18n.t("errors.messages.not_saved",
                     :count => object.errors.count,
                     :resource => object.class.model_name.human.downcase) %>
-  <div class="alert alert-block">
+  <div class="alert alert-error">
     <a class="close" data-dismiss="alert">×</a>
     <h4 class="alert-heading"><%= sentence.html_safe %></h4>
+    <br />
     <ul> <%= messages.html_safe %></ul>
   </div>
 <% end %>
