@@ -36,4 +36,23 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def bootstrap_error_messages!(object)
+    return "" if object.errors.empty?
+
+    messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+    sentence = I18n.t("errors.messages.not_saved",
+                      :count => object.errors.count,
+                      :resource => object.class.model_name.human.downcase)
+
+    html = <<-HTML
+    <div class="alert alert-block">
+      <a class="close" data-dismiss="alert">x</a>
+      <h4 class="alert-heading">#{sentence}</h4>
+      <ul>#{messages}</ul>
+    </div>
+    HTML
+
+    html.html_safe
+  end
 end
