@@ -15,3 +15,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require google-code-prettify-rails/prettify

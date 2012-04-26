@@ -57,6 +57,7 @@
 <pre class="prettyprint linenums">
   <%= @blob.data %>
 </pre>
+<script>$(function () { prettyPrint() })</script>
 <% else %>
 <!-- project entry list -->
 <%= render 'tree' %>
@@ -64,4 +65,3 @@
 
 <br />
 <h4>project</h4>  <%= debug @project %>
-

@@ -53,6 +53,8 @@ group :assets do
 # gem 'bootstrap-sass'
   gem 'anjlab-bootstrap-rails', '>= 2.0.2', :require => 'bootstrap-rails'
 
+  gem "google-code-prettify-rails"
+
 # gem 'will_paginate'
   gem 'bootstrap-will_paginate'
 end
