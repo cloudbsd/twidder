@@ -1,4 +1,6 @@
 class MicrogroupsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /microgroups
   # GET /microgroups.json
   def index

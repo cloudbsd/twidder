@@ -46,8 +46,8 @@ module ApplicationHelper
                       :resource => object.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="alert alert-block">
-      <a class="close" data-dismiss="alert">x</a>
+    <div class="alert alert-error alert-block fade in">
+      <a class="close" data-dismiss="alert">&times;</a>
       <h4 class="alert-heading">#{sentence}</h4>
       <ul>#{messages}</ul>
     </div>

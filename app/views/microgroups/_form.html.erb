@@ -1,5 +1,5 @@
 <%= form_for(@microgroup) do |f| %>
-  <%= render "shared/bootstrap_error_messages", object: f.object %>
+  <%= bootstrap_error_messages! f.object %>
 
   <div class="field scaffolds">
     <%= f.label :name %><br />
