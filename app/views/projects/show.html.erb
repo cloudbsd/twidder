@@ -37,17 +37,13 @@
 <%= link_to t('.edit'), edit_project_path(@project) %> |
 <%= link_to t('.back'), projects_path %>
 
+<br />
+<br />
+jbr />
 
-<br />
-<br />
-<ul class="nav nav-pills">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Settings</a></li>
-  <li><a href="#">Contact</a></li>
-</ul>
-<br />
+
+<div class="row">
+  <div class="span8">
 
 <!-- project path -->
 <%= render 'path' %>
@@ -63,5 +59,28 @@
 <%= render 'tree' %>
 <% end %>
 
-<br />
-<h4>project</h4>  <%= debug @project %>
+  </div> <!-- span8 -->
+
+  <div class="span4">
+
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header">Touchs</li>
+        <li class="active"><a href="#">Link</a></li>
+        <li><%= link_to "Index", '#' %></li>
+        <li><%= link_to "Hero", '#' %></li>
+        <li><%= link_to "Fluid", '#' %></li>
+        <li><%= link_to "Container", '#' %></li>
+        <li><%= link_to "Bootstrap", '#' %></li>
+        <li class="nav-header">Projects</li>
+        <li><%= link_to "Index", projects_path %></li>
+        <li><%= link_to "New", new_project_path %></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!--/.well -->
+  </div> <!-- span4 -->
+
+</div> <!-- row -->
