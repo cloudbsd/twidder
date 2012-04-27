@@ -265,20 +265,20 @@ def make_projects
 
   qi = User.find_by_email('cloudbsd@gmail.com')
 
-  prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'user001.jpg')
+  prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'project001.jpg')
 
   # Msgpack Project
   msg_name = 'Msgpack';
   msg_desc = %{MessagePack is a binary-based efficient object serialization library. It enables to exchange structured objects between many languages like JSON. But unlike JSON, it is very fast and small.}
   msg_path = '/Users/liqi/github/msgpack'
 
-  prj = do_make_project(qi, msg_name, msg_desc, msg_path, 'user002.jpg')
+  prj = do_make_project(qi, msg_name, msg_desc, msg_path, 'project002.jpg')
 
   for i in 1..7 do
     strname = msg_name + i.to_s
     strdesc = msg_desc
     strpath = msg_path + i.to_s
-    gravatar = format "user%03d.jpg", i
+    gravatar = format "project%03d.jpg", i
     prj = do_make_project(qi, strname, strdesc, strpath, gravatar)
   end
 end
