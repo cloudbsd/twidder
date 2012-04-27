@@ -68,6 +68,7 @@ zh-CN:
   projects:
     show:
       owner: "项目管理员"
+      members: "成员"
       name: "项目名称"
       description: "项目描述"
       edit: "编辑"

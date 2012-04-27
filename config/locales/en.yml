@@ -67,6 +67,7 @@ en:
   projects:
     show:
       owner: "Admin"
+      members: "Members"
       name: "Name"
       description: "Description"
       edit: "Edit"

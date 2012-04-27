@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <div class="span12">
 <p>
 <h3><a href='#'>twitter</a>/<a href='#'><%= @project.name %></a></h3>
 </p>
+  </div> <!-- span12 -->
 
+  <div class="span8">
 <p>
   <%= image_tag(@project.gravatar, size: "120x120") %>
-</p>
-
-<p>
-  <b><%= t('.owner') %>:</b>
-  <%= @project.owner.nickname %>
 </p>
 
 <p>
@@ -23,22 +22,42 @@
   <%= @project.description %>
 </p>
 
-<p>
-  <b>Path:</b>
-  <%= @project.path %>
-</p>
-
-<p>
-  <b>Group:</b>
-  <%= @project.group.name %>
-</p>
-
-
 <%= link_to t('.edit'), edit_project_path(@project) %> |
 <%= link_to t('.back'), projects_path %>
 
+  </div> <!-- span8 -->
+
+  <div class="span4">
+    <p>
+      <b><%= t('.owner') %>:</b>
+      <%= link_to @project.owner.nickname, @project.owner %>
+    </p>
+
+    <p>
+      <b>Path:</b>
+      <%= @project.path %>
+    </p>
+
+    <p>
+      <b>Group:</b>
+      <%= @project.group.name %>
+    </p>
+
+    <p>
+      <b><%= t('.members') %>:</b>
+      <%= @project.group.users.count %>
+    </p>
+    <% unless @project.group.users.empty? %>
+      <% @project.group.users.each do |user| %>
+        <%= link_to(image_tag(user.gravatar, size: "30x30"), user) %>
+      <% end %>
+    <% end %>
+  </div> <!-- span4 -->
+
+</div> <!-- row -->
+
 <br />
-<br />
+<hr>
 <br />
 
 
