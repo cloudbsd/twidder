@@ -28,14 +28,17 @@ link:files/vendor/rails/actionpack/README.html.
 
 == Getting Started
 
-1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
+1. At the command prompt, install gems used in Twidder project:
+       bundle install
 
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
+2. Create database:
+       rake db:create
 
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
+3. Import all the test data:
+       rake db:populate
+
+4. Go to http://localhost:3000/ and you'll see home page:
+       "Home Page!"
 
 4. Follow the guidelines to start developing your application. You can find
 the following resources handy:
