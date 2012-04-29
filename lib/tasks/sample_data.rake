@@ -251,6 +251,15 @@ def do_make_project(user, name, strdesc, strpath, strgravatar)
   grp = Group.create!(name: name, description: strdesc)
   prj = user.projects.create(name: name, description: strdesc, path: strpath, group: grp, gravatar: strgravatar)
   print_content "add_project: #{prj.name} created by #{user.nickname}"
+  return prj
+end
+
+def do_make_review(user, project, file, line, content)
+  review = user.reviews.build(content: content, file: file, line: line)
+  review.project = project
+  review.save
+  print_content "add_review: review created by #{user.nickname} on #{line} of #{file}", 2
+  return review
 end
 
 def make_projects
@@ -273,6 +282,11 @@ def make_projects
   msg_path = '/Users/liqi/github/msgpack'
 
   prj = do_make_project(qi, msg_name, msg_desc, msg_path, 'project002.jpg')
+  file = 'cpp/src/objectc.c'
+  for line in 30..50 do
+    content = Faker::Lorem.sentence(5)
+    review = do_make_review(qi, prj, file, line, content)
+  end
 
   for i in 1..7 do
     strname = msg_name + i.to_s

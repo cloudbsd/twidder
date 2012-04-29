@@ -15,12 +15,14 @@
     <%= link_to 'Edit', edit_microgroup_path(@microgroup) %> |
     <%= link_to 'Back', microgroups_path %>
 
-    <hr>
-
     <!-- micropost form -->
-    <% if user_signed_in? %>
+    <% if user_signed_in? && (current_user == @microgroup.owner || current_user.join?(@microgroup.group)) %>
+      <hr>
       <h1 class="micropost">What's up?</h1>
       <%= render 'users/micropost_form' %>
+    <% else %>
+      <br />
+      <br />
     <% end %>
     <!-- equal to below code:
     render partial: 'shared/micropost_form' if user_signed_in? -->

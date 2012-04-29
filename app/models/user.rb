@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
 
   # user <==> post relationship
   has_many :posts, dependent: :nullify
+  has_many :reviews, dependent: :nullify
   has_many :comments, dependent: :nullify
 
   def feed
@@ -56,6 +57,10 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     self.followee_items.find_by_followee_id(other_user.id).destroy
+  end
+
+  def join?(group)
+    self.groups.exists? group
   end
 
   def join!(group)
