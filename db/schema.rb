@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421152143) do
+ActiveRecord::Schema.define(:version => 20120429134756) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -98,6 +98,21 @@ ActiveRecord::Schema.define(:version => 20120421152143) do
 
   add_index "projects", ["group_id"], :name => "index_projects_on_group_id"
   add_index "projects", ["owner_id"], :name => "index_projects_on_owner_id"
+
+  create_table "reviews", :force => true do |t|
+    t.text     "content"
+    t.string   "file"
+    t.integer  "line"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["project_id", "file", "line"], :name => "index_reviews_on_project_id_and_file_and_line"
+  add_index "reviews", ["project_id"], :name => "index_reviews_on_project_id"
+  add_index "reviews", ["user_id", "project_id"], :name => "index_reviews_on_user_id_and_project_id"
+  add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

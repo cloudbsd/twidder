@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  file: MyString
+  line: 1
+  user: 
+  project: 
+
+two:
+  content: MyText
+  file: MyString
+  line: 1
+  user: 
+  project: 
