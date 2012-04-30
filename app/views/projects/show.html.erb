@@ -81,6 +81,12 @@
   </div> <!-- span8 -->
 
   <div class="span4">
+    <% if @blob %>
+      <div id="reviews">
+        <%= render :partial => 'reviews' %>
+      </div>
+    <% else %>
+    <% end %>
 
     <div class="well sidebar-nav">
       <ul class="nav nav-list">

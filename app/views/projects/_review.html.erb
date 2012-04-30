@@ -1,0 +1,21 @@
+<tr>
+  <td class="gravatar">
+    <%= image_tag(review.user.gravatar, size: '50x50') %>
+  </td>
+  <td class="review">
+    <span class="user">
+      <%= link_to review.user.nickname, review.user %>
+    </span>
+    <span class="content"><%= review.content %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(review.created_at) %> ago.
+    </span>
+  </td>
+  <% if is_current_user? review.user %>
+    <td class="actions">
+      <%= link_to t('.destroy'), [review.project, review], confirm: t('.are_you_sure'), method: :delete %>
+    </td>
+  <% else %>
+    <td class="actions"></td>
+  <% end %>
+</tr>

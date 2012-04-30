@@ -73,3 +73,6 @@ zh-CN:
       description: "项目描述"
       edit: "编辑"
       back: "返回"
+    review:
+      destroy: "删除"
+      are_you_sure: "你确定吗？"

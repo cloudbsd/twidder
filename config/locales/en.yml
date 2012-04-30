@@ -72,3 +72,6 @@ en:
       description: "Description"
       edit: "Edit"
       back: "Back"
+    review:
+      destroy: "Destroy"
+      are_you_sure: "Are you sure?"
