@@ -254,11 +254,12 @@ def do_make_project(user, name, strdesc, strpath, strgravatar)
   return prj
 end
 
-def do_make_review(user, project, file, line, content)
+def do_make_review(user, project, file, line)
+  content = "review created by #{user.nickname} on #{line} of #{file}"
   review = user.reviews.build(content: content, file: file, line: line)
   review.project = project
   review.save
-  print_content "add_review: review created by #{user.nickname} on #{line} of #{file}", 2
+  print_content "add_review: #{content}", 2
   return review
 end
 
@@ -284,8 +285,7 @@ def make_projects
   prj = do_make_project(qi, msg_name, msg_desc, msg_path, 'project002.jpg')
   file = 'cpp/src/objectc.c'
   for line in 30..50 do
-    content = Faker::Lorem.sentence(5)
-    review = do_make_review(qi, prj, file, line, content)
+    review = do_make_review(qi, prj, file, line)
   end
 
   for i in 1..7 do
