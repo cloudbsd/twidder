@@ -18,7 +18,7 @@ Twidder::Application.routes.draw do
     end
 
     resources :projects do
-      resources :reviews
+      resources :reviews, only: [:create, :destroy]
     end
 
     resources :posts do
