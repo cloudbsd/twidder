@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to @project, notice: 'Review was successfully created.' }
-        format.js
+        format.js { @reviews = @project.reviews }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to blob_project_path(@project, 'blob', paths) }
-      format.js
+      format.js { @reviews = @project.reviews }
       format.json { head :no_content }
     end
   end

@@ -5,6 +5,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  default_scope :order => 'reviews.created_at DESC'
+
 # scope :followees_by, lambda { |user, project, file, line|
 #   followee_ids = %(SELECT followee_id FROM following_items WHERE follower_id = :user_id)
 #   where("project_id IS :project_id AND (user_id IN (#{followee_ids}) OR user_id = :user_id)",

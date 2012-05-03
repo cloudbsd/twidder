@@ -1,4 +1,4 @@
-<%= form_for([@project, @project.reviews.build]) do |f| %>
+<%= form_for([@project, @project.reviews.build], remote: true) do |f| %>
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content, rows: 4 %>
