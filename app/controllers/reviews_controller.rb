@@ -8,8 +8,6 @@ class ReviewsController < ApplicationController
     @review.file = 'cpp/src/objectc.c'
     @review.line = 10
 
-    debug params
-
     respond_to do |format|
       if @review.save
         format.html { redirect_to @project, notice: 'Review was successfully created.' }
