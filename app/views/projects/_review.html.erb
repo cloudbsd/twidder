@@ -14,6 +14,7 @@
   <% if is_current_user? review.user %>
     <td class="actions">
       <%= link_to t('.destroy'), [review.project, review], confirm: t('.are_you_sure'), method: :delete %>
+      <%= link_to t('.destroy'), blob_project_path(@project, 'blob', @paths), confirm: t('.are_you_sure'), method: :delete %>
     </td>
   <% else %>
     <td class="actions"></td>

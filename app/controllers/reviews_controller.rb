@@ -5,15 +5,19 @@ class ReviewsController < ApplicationController
     @project = Project.find(params[:project_id])
     @review = @project.reviews.build(params[:review])
     @review.user = current_user
+    @review.file = 'cpp/src/objectc.c'
+    @review.line = 10
+
+    debug params
 
     respond_to do |format|
-      if @project.save
+      if @review.save
         format.html { redirect_to @project, notice: 'Review was successfully created.' }
         format.js
-        format.json { render json: @project, status: :created, location: @project }
+        format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end

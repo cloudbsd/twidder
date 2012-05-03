@@ -41,6 +41,10 @@ Twidder::Application.routes.draw do
     #
     match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :format => false
     match 'projects/:id/:tree(/*paths)' => 'projects#show', :as => :tree_project, :constraints => { :tree => 'tree' }, :format => false
+  # match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :via => :get, :format => false
+  # match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :via => :post, :format => false
+  # match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :via => :delete, :format => false
+  # match 'projects/:id/:tree(/*paths)' => 'projects#show', :as => :tree_project, :constraints => { :tree => 'tree' }, :via => [:get, :post, :delete], :format => false
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
