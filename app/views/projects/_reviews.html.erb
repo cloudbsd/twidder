@@ -1,8 +1,7 @@
 <% if @reviews.any? %>
   <table class='table-reviews table'>
-    <!-- below code doesn't work:
-    render @reviews -->
-    <%= render :partial => 'projects/review', :collection => @reviews %>
+    <!-- render :partial => 'projects/review', :collection => @reviews -->
+    <%= render @reviews %>
   </table>
   <%= will_paginate(@reviews, inner_window: 1, outer_window: 1) %>
 <% end %>

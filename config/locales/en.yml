@@ -75,3 +75,8 @@ en:
     review:
       destroy: "Destroy"
       are_you_sure: "Are you sure?"
+
+  reviews:
+    review:
+      destroy: "Destroy"
+      are_you_sure: "Are you sure?"

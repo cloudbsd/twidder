@@ -76,3 +76,8 @@ zh-CN:
     review:
       destroy: "删除"
       are_you_sure: "你确定吗？"
+
+  reviews:
+    review:
+      destroy: "删除"
+      are_you_sure: "你确定吗？"
