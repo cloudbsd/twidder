@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.reviews {
+  .entry {
+    overflow: auto;
+    margin-top: 1em;
+    border-bottom: 1px dotted #77d;
+    min-height: 100px;
+
+    img {
+      width: 80px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: absolute;
+    }
+  }
+}
+
 table.table-reviews {
   td.review {
     span.timestamp {
@@ -53,4 +69,4 @@ table.reviews {
   //}
 
   }
-}
+} // table.reviews
