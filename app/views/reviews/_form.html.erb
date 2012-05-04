@@ -1,7 +1,13 @@
-<%= form_for([@project, @project.reviews.build], remote: true) do |f| %>
+<%= form_for([@project, @project.reviews.build(file: @paths, line: 30)], remote: true) do |f| %>
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content, rows: 4 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :line %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :file %>
   </div>
   <div class="actions">
     <%= f.submit %>
