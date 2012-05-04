@@ -1,3 +1,56 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.table-reviews {
+  td.review {
+    span.timestamp {
+      display: block;
+      font-size: 85%;
+      color: #666;
+    }
+  }
+}
+
+table.reviews {
+  margin-top: 1em;
+//border-spacing: 0;
+  width: 100%;
+
+  tr {
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+
+    td.gravatar {
+      padding: 10px;
+  //  vertical-align: top;
+  //  padding-top: 10px;
+////  padding-bottom: 10px;
+  //  padding-left: 10px;
+  //  padding-right: 10px;
+  //  width: 50px;
+  //  height: 50px;
+    }
+
+    td.review {
+  //  vertical-align: top;
+  //  padding-top: 10px;
+
+      span.timestamp {
+        display: block;
+        font-size: 85%;
+        color: #666;
+      }
+    }
+
+  //td.actions {
+  //  vertical-align: center;
+  //  padding: 10px;
+  //  width: 40px;
+////    font-size: x-small;
+////    text-align: right;
+////    padding-left: 1em;
+  //}
+
+  }
+}
