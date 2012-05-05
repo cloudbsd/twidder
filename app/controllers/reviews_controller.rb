@@ -5,11 +5,12 @@ class ReviewsController < ApplicationController
     @project = Project.find(params[:project_id])
     @review = @project.reviews.build(params[:review])
     @review.user = current_user
+    @paths = @review.file
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @project, notice: 'Review was successfully created.' }
-        format.js { @paths = @review.file; @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
+        format.html { redirect_to blob_project_path(@project, 'blob', @paths), notice: 'Review was successfully created.' }
+        format.js { @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
@@ -28,8 +29,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to blob_project_path(@project, 'blob', @paths) }
-    # format.js { @reviews = @project.reviews }
-      format.js { @paths = @review.file; @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
+      format.js { @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
       format.json { head :no_content }
     end
   end
