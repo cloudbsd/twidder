@@ -1,0 +1,15 @@
+<div class="entry">
+  <%= image_tag(project.gravatar) %>
+  <h3><%= project.name %></h3>
+  <p>
+  <%= sanitize(project.description) %>
+  </p>
+  <div class="price_line">
+    <span class="price"><%= project.path %></span>
+  </div>
+  <div class="action">
+    <%= link_to 'Show', project %>
+    <%= link_to 'Edit', edit_project_path(project) %>
+    <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
+  </div>
+</div>

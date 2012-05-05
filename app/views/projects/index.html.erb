@@ -6,29 +6,8 @@
     <%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>
     <br />
     <br />
+    <%= render 'sidebar' %>
 
-    <div class="well sidebar-nav">
-      <ul class="nav nav-list">
-        <li class="nav-header">Touchs</li>
-        <li class="active"><a href="#">Link</a></li>
-        <li><%= link_to "Index", '#' %></li>
-        <li><%= link_to "Hero", '#' %></li>
-        <li><%= link_to "Fluid", '#' %></li>
-        <li><%= link_to "Container", '#' %></li>
-        <li><%= link_to "Bootstrap", '#' %></li>
-        <li class="nav-header">Projects</li>
-        <li><%= link_to "Index", projects_path %></li>
-        <li><%= link_to "New", new_project_path %></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li class="nav-header">Tags</li>
-        <li><%= link_to "Index", '#' %></li>
-        <li><%= link_to "New", '#' %></li>
-        <li><a href="#">Link</a></li>
-      </ul>
-    </div><!--/.well -->
   </div> <!-- span3 -->
 
   <div class="span9">
@@ -42,24 +21,7 @@
 
     <div class="projects">
       <h1>Most watched projects</h1>
-
-      <% @projects.each do |project| %>
-        <div class="entry">
-          <%= image_tag(project.gravatar) %>
-          <h3><%= project.name %></h3>
-          <p>
-          <%= sanitize(project.description) %>
-          </p>
-          <div class="price_line">
-            <span class="price"><%= project.path %></span>
-          </div>
-          <div class="action">
-            <%= link_to 'Show', project %>
-            <%= link_to 'Edit', edit_project_path(project) %>
-            <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
-          </div>
-        </div>
-      <% end %>
+      <%= render @projects %>
     </div>
 
   </div> <!-- span9 -->
