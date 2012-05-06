@@ -66,6 +66,8 @@ zh-CN:
       microposts: "微博"
 
   projects:
+    index:
+      new_project: "创建项目"
     show:
       owner: "项目管理员"
       members: "成员"
@@ -81,3 +83,5 @@ zh-CN:
     review:
       destroy: "删除"
       are_you_sure: "你确定吗？"
+    form:
+      submit: "添加注释"

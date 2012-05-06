@@ -65,6 +65,8 @@ en:
       microposts: "Microposts"
 
   projects:
+    index:
+      new_project: "New Project"
     show:
       owner: "Admin"
       members: "Members"
@@ -80,3 +82,5 @@ en:
     review:
       destroy: "Destroy"
       are_you_sure: "Are you sure?"
+    form:
+      submit: "Create Review"
