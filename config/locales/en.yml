@@ -64,6 +64,10 @@ en:
     destroy:
       microposts: "Microposts"
 
+  microgroups:
+    index:
+      new_microgroup: "New Microgroup"
+
   projects:
     index:
       new_project: "New Project"

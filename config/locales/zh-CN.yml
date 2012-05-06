@@ -65,6 +65,10 @@ zh-CN:
     destroy:
       microposts: "微博"
 
+  microgroups:
+    index:
+      new_microgroup: "创建微群"
+
   projects:
     index:
       new_project: "创建项目"
