@@ -14,25 +14,26 @@ done:
   - support admin account
   - multiple languages
   - project support microgroup
-
-working:
   - use bootstrap in all page (1)
   - ajax
   - product layout and page flow (1) (google, douban, twitter, sina weibo, github)
   - user management (1)
+  - browse source code
+
+working:
+  - interface style (google and apple style)
+  - project show and management (2)
+  - add comments for source code (4)
 
 features to add:
-* - browse source code
-* - add comments for source code (4)
+  - navigate between different file
   - allow other account signing in
   - search engine
   - circle
   - forward micropost
   - blog and its comments
-* - project show and management (2)
 
 user interface:
-* - interface style (google and apple style)
 
 tests:
 * - unit test

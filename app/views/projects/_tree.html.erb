@@ -8,7 +8,6 @@
     <th>Size</th>
     <th>Author</th>
     <th>Date</th>
-    <th></th>
   </tr>
 
   <% if @paths %>
@@ -20,7 +19,6 @@
       <% else %>
         <td><%= link_to_if @paths, "..", project_path(@project) %></td>
       <% end %>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>

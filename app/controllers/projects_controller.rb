@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 
   def show_tree
     # get correct path for tree or blob
-    if (params[:tree] == 'blob')
+    if (params[:tree] == 'blob' || params[:tree] == 'line')
       @paths = params[:paths]
       @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20)
     elsif (params[:tree] == 'tree')
@@ -102,7 +102,7 @@ class ProjectsController < ApplicationController
     begin
       @repo = Grit::Repo.new(@project.path)
       @contents = @repo.tree('master',@paths).contents
-      if (params[:tree] == 'blob')
+      if (params[:tree] == 'blob' || params[:tree] == 'line')
         @blob = @contents.first
         redirect_to @project, notice: 'project blob path is wrong.' and return unless @blob
       else

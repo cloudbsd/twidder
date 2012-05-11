@@ -39,6 +39,7 @@ Twidder::Application.routes.draw do
     #
     # :format => false
     #
+    match 'projects/:id/:tree/*paths/:line' => 'projects#show', :as => :line_project, :constraints => { :tree => 'line' }, :format => false
     match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :format => false
     match 'projects/:id/:tree(/*paths)' => 'projects#show', :as => :tree_project, :constraints => { :tree => 'tree' }, :format => false
   # match 'projects/:id/:tree/*paths' => 'projects#show', :as => :blob_project, :constraints => { :tree => 'blob' }, :via => :get, :format => false
