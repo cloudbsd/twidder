@@ -93,7 +93,14 @@ class ProjectsController < ApplicationController
     # get correct path for tree or blob
     if (params[:tree] == 'blob' || params[:tree] == 'line')
       @paths = params[:paths]
-      @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20)
+      if params[:tree] == 'line'
+        @line = params[:line]
+        @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20)
+      else
+        @line = nil
+        @reviews = []
+      # @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20)
+      end
     elsif (params[:tree] == 'tree')
       @paths = params[:paths] ? (params[:paths].to_s + '/') : nil
     end

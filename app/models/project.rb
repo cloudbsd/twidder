@@ -9,4 +9,8 @@ class Project < ActiveRecord::Base
   def reviews_by_file(file)
     Review.reviews_by_file(self, file)
   end
+
+  def reviews_by_line(file, line)
+    Review.reviews_by_line(self, file, line)
+  end
 end

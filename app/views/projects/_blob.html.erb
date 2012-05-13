@@ -1,17 +1,22 @@
 <div class="span8">
-  <pre class="prettyprint linenums">
-    <%= @blob.data %>
+  <% showdata = add_linenum(@blob.data) %>
+  <pre class="prettyprint">
+    <%= showdata.html_safe %>
   </pre>
   <script>$(function () { prettyPrint() })</script>
 </div> <!-- span8 -->
 
 <div class="span4">
-  <% if user_signed_in? %>
+  <% if user_signed_in? and @line != nil %>
     <div id="new_review">
       <%= render 'reviews/form' %>
     </div>
   <% end %>
-  <div id="reviews">
-    <%= render :partial => 'reviews' %>
-  </div>
+  <% if @line != nil %>
+    <div id="reviews">
+      <%= render :partial => 'reviews' %>
+    </div>
+  <% else %>
+    <%= review_summary(@blob.data, @project, @paths).html_safe %>
+  <% end %>
 </div> <!-- span4 -->

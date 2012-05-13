@@ -95,6 +95,38 @@ module ProjectsHelper
       "--"
     end
   end
+
+  def add_linenum(data)
+    linenum = 0
+    newdata = "\n"
+    data.each_line do |line|
+      linenum += 1
+      strnum = format("% 4d", linenum)
+      prefix = link_to "#{strnum}", line_project_path(@project, 'line', @paths, linenum)
+      newdata += prefix + ":  " + line
+    end
+    return newdata
+  end
+
+  def line_count(data)
+    linenum = 0
+    data.each_line do |line|
+      linenum += 1
+    end
+    return linenum
+  end
+
+  def review_summary(data, project, file)
+    linenum = 0
+    html_reviews = "\n"
+    data.each_line do |line|
+      linenum += 1
+      prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
+      reviews = project.reviews_by_line(file, linenum)
+      html_reviews += "<p>#{reviews.count} reviews for #{prefix} line.</p>" if reviews.any?
+    end
+    return html_reviews
+  end
 end
 
 
