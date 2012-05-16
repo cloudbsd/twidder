@@ -16,29 +16,7 @@
     </div>
 
     <table class="microgroups">
-    <% @microgroups.each do |microgroup| %>
-      <tr>
-        <td class='microgroup_gravatar'>
-          <%= image_tag(microgroup.owner.gravatar, size: '80x80') %><br />
-          <%= link_to microgroup.owner.nickname, microgroup.owner %>
-        </td>
-
-        <td class='microgroup_description'>
-          <dl>
-            <dt><%= microgroup.name %></dt>
-            <dd><%= truncate(microgroup.description, length: 300) %></dd>
-          </dl>
-        </td>
-
-        <td class='microgroup_actions'>
-          <%= link_to 'Show', microgroup %><br />
-          <% if is_current_user? microgroup.owner %>
-            <%= link_to 'Edit', edit_microgroup_path(microgroup) %><br />
-            <%= link_to 'Destroy', microgroup, confirm: 'Are you sure?', method: :delete %>
-          <% end %>
-      </td>
-      </tr>
-    <% end %>
+      <%= render @microgroups %>
     </table>
 
     <br />

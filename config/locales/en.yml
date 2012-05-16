@@ -84,6 +84,8 @@ en:
 
   reviews:
     review:
+      up: " Up "
+      down: "Down"
       destroy: "Destroy"
       are_you_sure: "Are you sure?"
     form:

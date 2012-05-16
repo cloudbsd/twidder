@@ -85,6 +85,8 @@ zh-CN:
 
   reviews:
     review:
+      up: "顶"
+      down: "踩"
       destroy: "删除"
       are_you_sure: "你确定吗？"
     form:
