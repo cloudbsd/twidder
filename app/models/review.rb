@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :project
+  has_many :votes, dependent: :destroy
+  has_many :voted_users, through: :votes, source: :user
 
   default_scope :order => 'reviews.created_at DESC'
 

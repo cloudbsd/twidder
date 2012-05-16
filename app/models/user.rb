@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :nullify
   has_many :comments, dependent: :nullify
 
+  has_many :votes, dependent: :destroy
+  has_many :voted_reviews, through: :votes, source: :review
+
   def feed
     Micropost.followees_by(self)
   end
