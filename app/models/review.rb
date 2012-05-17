@@ -34,4 +34,28 @@ class Review < ActiveRecord::Base
     where("project_id IS :project_id AND user_id = :user_id AND file = :file AND line = :line",
           { user_id: user, project_id: project, file: file, line: line })
   }
+
+  def total_points
+    sum = 0
+    for i in 0...votes.count do
+      sum += votes[i].point
+    end
+    return sum
+
+  # votes.each do |vote|
+  #   str += vote.to_s
+  #   sum += 1
+  # end
+  # return str
+  # votes.count
+  ##sum = 0
+  ##if self.votes.any?
+  ##  self.votes.each do |vote|
+  ##    sum += 1#vote.point
+  ##  end
+  ##end
+  ##sum
+  # votes.to_a.sum { |vote| vote.point } if votes != nil && votes.any?
+  # sum
+  end
 end

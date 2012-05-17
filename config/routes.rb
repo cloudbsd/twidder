@@ -21,6 +21,13 @@ Twidder::Application.routes.draw do
       resources :reviews, only: [:create, :destroy]
     end
 
+    resources :reviews, only: [] do
+    # resources :votes, only: [:create, :destroy]
+      member do
+        get :up, :down
+      end
+    end
+
     resources :posts do
       resources :comments
     end

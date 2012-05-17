@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-      # format.html { redirect_to blob_project_path(@project, 'blob', @paths), notice: 'Review was successfully created.' }
-      # format.js { @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
         format.html { redirect_to line_project_path(@project, 'line', @paths, @line), notice: 'Review was successfully created.' }
         format.js { @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20) }
         format.json { render json: @review, status: :created, location: @review }
@@ -33,10 +31,57 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
     # format.html { redirect_to blob_project_path(@project, 'blob', @paths) }
-    # format.js { @reviews = @project.reviews_by_file(@paths).paginate(page: params[:page], per_page: 20) }
       format.html { redirect_to line_project_path(@project, 'line', @paths, @line) }
       format.js { @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20) }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /reviews/1/up
+  # GET /reviews/1/up.json
+  def up
+    @review = Review.find(params[:id])
+    @vote = @review.votes.build(params[:vote])
+    @vote.user = current_user
+    @vote.point = 1
+
+    @paths = @review.file
+    @line = @review.line
+    @project = @review.project
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to line_project_path(@project, 'line', @paths, @line), notice: 'Vote was successfully created.' }
+        format.js
+        format.json { render json: @review, status: :created, location: @review }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /reviews/1/down
+  # GET /reviews/1/down.json
+  def down
+    @review = Review.find(params[:id])
+    @vote = @review.votes.build(params[:vote])
+    @vote.user = current_user
+    @vote.point = -1
+
+    @paths = @review.file
+    @line = @review.line
+    @project = @review.project
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to line_project_path(@project, 'line', @paths, @line), notice: 'Vote was successfully created.' }
+        format.js
+        format.json { render json: @review, status: :created, location: @review }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
     end
   end
 end

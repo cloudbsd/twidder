@@ -1,9 +1,10 @@
 <tr>
   <td class="actions">
-    <%= link_to t('.up'), [review.project, review], class: "btn btn-warning btn-mini", method: :delete, remote: true %>
+    <% vote = review.votes.build %>
+    <%= link_to t('.up'), up_review_path(vote.review), class: "btn btn-warning btn-mini" %>
     <br />
-    <h3>Score</h3>
-    <%= link_to t('.down'), [review.project, review], class: "btn btn-danger btn-mini", method: :delete, remote: true %>
+    <h3><%= review.total_points %></h3>
+    <%= link_to t('.down'), down_review_path(vote.review), class: "btn btn-danger btn-mini" %>
   </td>
   <td class="gravatar">
     <%= image_tag(review.user.gravatar, size: '50x50') %>
