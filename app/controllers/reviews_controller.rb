@@ -52,7 +52,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to line_project_path(@project, 'line', @paths, @line), notice: 'Vote was successfully created.' }
-        format.js
+        format.js { @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20) }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to line_project_path(@project, 'line', @paths, @line), notice: 'Vote was successfully created.' }
-        format.js
+        format.js { @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20) }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
