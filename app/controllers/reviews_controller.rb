@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user!
+
   # POST /projects/1/reviews
   # POST /projects/1/reviews.json
   def create
