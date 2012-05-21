@@ -96,7 +96,8 @@ class ProjectsController < ApplicationController
       @paths = params[:paths]
       if params[:tree] == 'line'
         @line = params[:line]
-        @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20)
+        @reviews = Review.with_project(@project).with_file(@paths).with_line(@line).paginate(page: params[:page], per_page: 20)
+      # @reviews = @project.reviews_by_line(@paths, @line).paginate(page: params[:page], per_page: 20)
       else
         @line = nil
         @reviews = []
