@@ -1,34 +1,5 @@
 <h1> <%= t('.title') %> </h1>
 
-<%= will_paginate %>
-
-<table class="table">
-  <tr>
-    <th></th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Nickname</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag(user.gravatar, size: "50x50") %></td>
-    <td><%= user.id %></td>
-    <td><%= user.name %></td>
-    <td><%= user.nickname %></td>
-    <td><%= user.email %></td>
-    <td>
-      <td><%= link_to 'Show', user_path(user) %></td>
-      <td><%= link_to_if is_current_user?(user), 'Edit', edit_user_registration_path(user) %></td>
-      <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-    </td>
-  </tr>
-<% end %>
-</table>
-
-<%= will_paginate %>
+<div id='users'%>
+  <%= render 'users' %>
+</div>

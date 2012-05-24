@@ -1,3 +1,42 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.posts {
+  margin-top: 1em;
+//border-spacing: 0;
+  width: 100%;
+
+  tr {
+  //height: 70px;
+  //border-bottom: 1px solid #ccc;
+
+    th.current {
+      padding-right: 12px;
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+
+    th.asc {
+      background-image: url(up_arrow.gif);
+    }
+
+    th.desc {
+      background-image: url(down_arrow.gif);
+    }
+
+    td.title {
+      min-width: 100px;
+    }
+
+  //td.actions {
+  //  vertical-align: center;
+  //  padding: 10px;
+  //  width: 40px;
+////    font-size: x-small;
+////    text-align: right;
+////    padding-left: 1em;
+  //}
+
+  }
+} // table.posts

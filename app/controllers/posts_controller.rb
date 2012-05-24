@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /posts
   # GET /posts.json
   def index
-    sleep 2
+    # to simulate slow network, and will_paginate show 'Page is loading ...'
+  # sleep 2
   # @posts = Post.all
-    @posts = Post.paginate(page: params[:page], per_page: 5)
+  # @posts = Post.paginate(page: params[:page], per_page: 5)
+    @posts = Post.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -88,5 +91,15 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def sort_column
+    Post.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

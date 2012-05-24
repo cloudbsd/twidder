@@ -1,23 +1,25 @@
 <%= will_paginate @posts %>
 
-<table class='table'>
+<table class="table posts">
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= sortable "title" %></th>
+    <th class="current asc"><%= sortable "content" %></th>
+    <th><%= link_to "User", :sort => "user_id" %></th>
+    <th class="current asc">
+      <%= link_to "action", params.merge(:sort => params[:sort], direction: params[:direction], :page => nil), {:class => "current asc"} %>
+    </th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.title %></td>
+    <td class="title"><%= post.title %></td>
     <td><%= post.content %></td>
     <td><%= post.author_name %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to_if is_current_user?(post.user), 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to_if is_current_user?(post.user), 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <%= link_to 'Show', post %><br />
+      <%= link_to_if is_current_user?(post.user), 'Edit', edit_post_path(post) %><br />
+      <%= link_to_if is_current_user?(post.user), 'Destroy', post, confirm: 'Are you sure?', method: :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
