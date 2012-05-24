@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   # sleep 2
   # @posts = Post.all
   # @posts = Post.paginate(page: params[:page], per_page: 5)
-    @posts = Post.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 5)
+    @posts = Post.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 5)
 
     respond_to do |format|
       format.html # index.html.erb
