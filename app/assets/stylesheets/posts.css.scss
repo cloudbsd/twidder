@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*
 table.posts {
   margin-top: 1em;
 //border-spacing: 0;
@@ -11,17 +12,17 @@ table.posts {
   //height: 70px;
   //border-bottom: 1px solid #ccc;
 
-    th.current {
+    th .current {
       padding-right: 12px;
       background-repeat: no-repeat;
       background-position: right center;
     }
 
-    th.asc {
+    th .asc {
       background-image: url(up_arrow.gif);
     }
 
-    th.desc {
+    th .desc {
       background-image: url(down_arrow.gif);
     }
 
@@ -40,3 +41,37 @@ table.posts {
 
   }
 } // table.posts
+*/
+
+
+//table.posts {
+//  border-collapse: collapse;
+//  margin-bottom: 10px;
+//}
+//
+//.posts td, .posts th {
+//  padding: 4px 10px;
+//  border: solid 1px #AAA;
+//}
+
+.posts .price {
+  text-align: right;
+}
+
+.posts th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.posts th .asc {
+  background-image: url(up_arrow.gif);
+}
+
+.posts th .desc {
+  background-image: url(down_arrow.gif);
+}
+
+.posts td.title {
+  min-width: 100px;
+}

@@ -6,11 +6,9 @@
 <table class="table posts">
   <tr>
     <th><%= sortable "title" %></th>
-    <th class="current asc"><%= sortable "content" %></th>
+    <th><%= sortable "content" %></th>
     <th><%= link_to "User", :sort => "user_id" %></th>
-    <th class="current asc">
-      <%= link_to "action", params.merge(:sort => params[:sort], direction: params[:direction], :page => nil), {:class => "current asc"} %>
-    </th>
+    <th> </th>
   </tr>
 
 <% @posts.each do |post| %>
