@@ -122,7 +122,8 @@ module ProjectsHelper
     data.each_line do |line|
       linenum += 1
       prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
-      reviews = project.reviews_by_line(file, linenum)
+      reviews = Review.with_project(project).with_file(file).with_line(linenum)
+    # reviews = project.reviews_by_line(file, linenum)
       html_reviews += "<p>#{reviews.count} reviews for #{prefix} line.</p>" if reviews.any?
     end
     return html_reviews
