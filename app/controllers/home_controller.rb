@@ -15,4 +15,7 @@ class HomeController < ApplicationController
 
   def test
   end
+
+  def jquery
+  end
 end

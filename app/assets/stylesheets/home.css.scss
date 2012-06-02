@@ -27,3 +27,20 @@
     }
   }
 }
+
+body {
+  font: 62.5% Verdana, Helvetica, Arial, sans-serif;
+  color: #555;
+  background: #dfd;
+  
+#switcher {
+  width: 300px;
+  padding: .5em;
+  border: 1px solid #777;
+}
+.lualabel {
+  width: 130px;
+  margin: .5em 0;
+  cursor: pointer;
+}
+}

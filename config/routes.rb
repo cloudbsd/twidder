@@ -34,6 +34,7 @@ Twidder::Application.routes.draw do
 
     get "home/index"
     get "home/test"
+    get "home/jquery"
     authenticated :user do
       root :to => 'home#index'
     end
