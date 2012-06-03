@@ -4,7 +4,7 @@
     <% if bcp.active %>
       <li class="active"><%= bcp.name %></li>
     <% else %>
-      <li><%= link_to bcp.name, tree_project_path(@project, 'tree', bcp.link) %> <span class="divider">/</span></li>
+      <li><%= link_to bcp.name, tree_project_path(@project, 'tree', bcp.link), { id: 'codetree', remote: true } %> <span class="divider">/</span></li>
     <% end %>
   <% end %>
 </ul>
