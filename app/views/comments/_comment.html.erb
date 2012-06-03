@@ -1,10 +1,9 @@
 <% if comment == @current_comment %>
-  <div id="current_comment">
+  <tr id="current_comment">
 <% else %>
-  <div>
+  <tr>
 <% end %>
 
-<tr>
   <td class="comment">
     <span class="user">
       <%= link_to comment.user.nickname, comment.user %>
@@ -23,5 +22,3 @@
     <td class="actions"></td>
   <% end %>
 </tr>
-
-</div>
