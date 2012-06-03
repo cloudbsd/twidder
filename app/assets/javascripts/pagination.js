@@ -11,7 +11,7 @@ $(function() {
 if (history && history.pushState) {
   $(function() {
     // project source code
-    $("#code a").live("click", function() {
+    $("a#codetree").live("click", function() {
       $.getScript(this.href);
       history.pushState(null, document.title, this.href);
       return false;
@@ -20,7 +20,6 @@ if (history && history.pushState) {
     $("#posts th a, #posts .pagination a").live("click", function() {
       $.getScript(this.href);
       history.pushState(null, document.title, this.href);
-//    e.preventDefault();
       return false;
     });
     $("#posts_search input").keyup(function() {
