@@ -35,12 +35,11 @@ module ProjectsHelper
   end
 
   class GritShowEntry
-    attr_accessor :tree, :size, :date, :author
-    def initialize(tree, size, date, author)
+    attr_accessor :tree, :size, :date
+    def initialize(tree, size, date)
       @tree = tree
       @size = size
       @date = date
-      @author = author
     end
     def is_blob?
       !is_tree
@@ -50,11 +49,19 @@ module ProjectsHelper
     end
   end
 
+  def grit_entry_basename entry
+    entry.basename
+  end
+
+  def grit_entry_path entry
+    entry.name
+  end
+
   def grit_entry_status content
     tree = content.is_a?(Grit::Tree)
     size = content_size(content)
     head = @repo.log('master', content.name).first
-    gentry = GritShowEntry.new(tree, size, head.date.to_s(:long), head.author)
+    gentry = GritShowEntry.new(tree, size, head.date.to_s(:long))
     gentry
   end
 
