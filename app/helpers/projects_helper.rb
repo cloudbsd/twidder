@@ -49,6 +49,23 @@ module ProjectsHelper
     end
   end
 
+  def fs_entry_status(entry)
+    st = File.stat entry
+    tree = File.directory?(entry)
+    size = st.size
+    gentry = GritShowEntry.new(tree, size, File.ctime(entry).to_s(:long))
+    gentry
+  end
+
+  def fs_entry_basename(entry)
+    File.basename(entry)
+  end
+
+  def fs_entry_path(entry, path)
+    path += '/' unless path.end_with? "/"
+    path + entry
+  end
+
   def grit_entry_basename entry
     entry.basename
   end
@@ -69,21 +86,21 @@ module ProjectsHelper
     content.is_a? Grit::Tree
   end
 
-  def committed_date path
-    head = @repo.log('master', path).first
-    head.date.to_s(:long)
-  # head.date.strftime("%B %d, %Y")
-  end
+# def committed_date path
+#   head = @repo.log('master', path).first
+#   head.date.to_s(:long)
+# # head.date.strftime("%B %d, %Y")
+# end
 
-  def committed_message path
-    head = @repo.log('master', path).first
-    head.message
-  end
+# def committed_message path
+#   head = @repo.log('master', path).first
+#   head.message
+# end
 
-  def committed_author path
-    head = @repo.log('master', path).first
-    head.author
-  end
+# def committed_author path
+#   head = @repo.log('master', path).first
+#   head.author
+# end
 
   def content_type content
     if content.is_a? Grit::Tree
