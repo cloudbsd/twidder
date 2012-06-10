@@ -14,9 +14,9 @@
     <tr>
       <td></td>
       <% if ppaths %>
-        <td><%= link_to_if @paths, "..", tree_project_path(@project, 'tree', ppaths) %></td>
+        <td><%= link_to_if @paths, "..", tree_project_path(@project, 'tree', ppaths), {id: 'codetree', remote: true } %></td>
       <% else %>
-        <td><%= link_to_if @paths, "..", project_path(@project) %></td>
+        <td><%= link_to_if @paths, "..", project_path(@project), {id: 'codetree', remote: true } %></td>
       <% end %>
       <td></td>
       <td></td>
