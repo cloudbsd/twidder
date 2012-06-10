@@ -124,8 +124,8 @@ module ProjectsHelper
     end
   end
 
-  def fs_add_linenum(filename)
-    File.open(filename, "r") do |file|
+  def fs_add_linenum(abs_filename)
+    File.open(abs_filename, "r") do |file|
       linenum = 0
       newdata = "\n"
       file.each_line do |line|
@@ -158,14 +158,15 @@ module ProjectsHelper
     return linenum
   end
 
-  def fs_review_summary(filename, project, file)
-    File.open(filename, "r") do |ffile|
+  # rel means relative
+  def fs_review_summary(abs_filename, project, rel_filename)
+    File.open(abs_filename, "r") do |ffile|
       linenum = 0
       html_reviews = "\n"
       ffile.each_line do |line|
         linenum += 1
         prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
-        reviews = Review.with_project(project).with_file(file).with_line(linenum)
+        reviews = Review.with_project(project).with_file(rel_filename).with_line(linenum)
         html_reviews += "<p>#{reviews.count} reviews for #{prefix} line.</p>" if reviews.any?
       end
       return html_reviews

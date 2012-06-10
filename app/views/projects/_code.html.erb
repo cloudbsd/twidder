@@ -1,14 +1,15 @@
 <div class="row">
   <div class="span8">
-    <!-- project path -->
     <%= render 'path' %>
   </div> <!-- span8 -->
 
   <% if @blob %>
-    <!-- project file -->
     <%= render 'blob' %>
   <% else %>
-    <!-- project entry list -->
     <%= render 'tree' %>
   <% end %>
 </div> <!-- row -->
+
+<hr>
+<%= debug params %>
+<hr>
