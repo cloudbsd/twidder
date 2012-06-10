@@ -1,5 +1,5 @@
 <div class="span8">
-  <% showdata = add_linenum(@blob) %>
+  <% showdata = fs_add_linenum(@blob) %>
   <pre class="prettyprint">
     <%= showdata.html_safe %>
   </pre>
@@ -17,6 +17,6 @@
       <%= render :partial => 'reviews' %>
     </div>
   <% else %>
-    <%= review_summary(@blob, @project, @paths).html_safe %>
+    <%= fs_review_summary(@blob, @project, @paths).html_safe %>
   <% end %>
 </div> <!-- span4 -->
