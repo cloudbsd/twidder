@@ -1,4 +1,4 @@
-<% current_file = @current_path + entry %>
+<% current_file = @absolute_path + entry %>
 <% ge = fs_entry_status(current_file) %>
 <tr>
   <% icon_file = ge.is_tree? ? 'dir.png' : 'txt.png' %>

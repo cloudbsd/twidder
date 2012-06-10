@@ -105,16 +105,16 @@ class ProjectsController < ApplicationController
       @paths = params[:paths] ? (params[:paths].to_s + '/') : nil
     end
 
-    @current_path = @project.path
-    @current_path += '/' unless @current_path.end_with? '/'
-    @current_path += @paths if @paths
+    @absolute_path = @project.path
+    @absolute_path += '/' unless @absolute_path.end_with? '/'
+    @absolute_path += @paths if @paths
 
     if (params[:tree] == 'blob' || params[:tree] == 'line')
-      @blob = @current_path
+      @blob = @absolute_path
       redirect_to @project, notice: 'project blob path is wrong.' and return unless File.exist? @blob
     else
       @blob = nil
-      @entries = Dir.entries(@current_path)
+      @entries = Dir.entries(@absolute_path)
       @entries.delete "."
       @entries.delete ".."
     end
@@ -122,7 +122,7 @@ class ProjectsController < ApplicationController
     logger.info "+++++++++++++++++++++++++++++++++++++"
     logger.info params
     logger.info "+++++++++++++++++++++++++++++++++++++"
-    logger.info @current_path
+    logger.info @absolute_path
     logger.info "+++++++++++++++++++++++++++++++++++++"
     logger.info @paths
     logger.info "+++++++++++++++++++++++++++++++++++++"
