@@ -105,21 +105,76 @@ class ProjectsController < ApplicationController
       @paths = params[:paths] ? (params[:paths].to_s + '/') : nil
     end
 
-    # get entry list
-    begin
-      @repo = Grit::Repo.new(@project.path)
-      @contents = @repo.tree('master',@paths).contents
-      if (params[:tree] == 'blob' || params[:tree] == 'line')
-        @blob = @contents.first
-        redirect_to @project, notice: 'project blob path is wrong.' and return unless @blob
-      else
-        @blob = nil
-        @entries = @contents
-      end
-    rescue Grit::GitRuby::Repository::NoSuchPath
-      redirect_to @project, notice: 'project tree path is wrong.' and return
-    rescue
-      redirect_to @project and return
+    @current_path = @project.path
+    @current_path += '/' unless @current_path.end_with? '/'
+    @current_path += @paths if @paths
+
+    if (params[:tree] == 'blob' || params[:tree] == 'line')
+      @blob = @current_path
+      redirect_to @project, notice: 'project blob path is wrong.' and return unless File.exist? @blob
+    else
+      @blob = nil
+      @entries = Dir.entries(@current_path)
     end
+
+    logger.info "+++++++++++++++++++++++++++++++++++++"
+    logger.info params
+    logger.info "+++++++++++++++++++++++++++++++++++++"
+    logger.info @current_path
+    logger.info "+++++++++++++++++++++++++++++++++++++"
+    logger.info @paths
+    logger.info "+++++++++++++++++++++++++++++++++++++"
+    logger.info @blob
+    logger.info "+++++++++++++++++++++++++++++++++++++"
+
+#   # get entry list
+#   begin
+#     @repo = Grit::Repo.new(@project.path)
+#     @contents = @repo.tree('master',@paths).contents
+#     if (params[:tree] == 'blob' || params[:tree] == 'line')
+#       @blob = @contents.first
+#       redirect_to @project, notice: 'project blob path is wrong.' and return unless @blob
+#     else
+#       @blob = nil
+#       @entries = @contents
+#     end
+#   rescue Grit::GitRuby::Repository::NoSuchPath
+#     redirect_to @project, notice: 'project tree path is wrong.' and return
+#   rescue
+#     redirect_to @project and return
+#   end
   end
+
+# def show_tree
+#   # get correct path for tree or blob
+#   if (params[:tree] == 'blob' || params[:tree] == 'line')
+#     @paths = params[:paths]
+#     if params[:tree] == 'line'
+#       @line = params[:line]
+#       @reviews = Review.with_project(@project).with_file(@paths).with_line(@line).paginate(page: params[:page], per_page: 20)
+#     else
+#       @line = nil
+#       @reviews = []
+#     end
+#   elsif (params[:tree] == 'tree')
+#     @paths = params[:paths] ? (params[:paths].to_s + '/') : nil
+#   end
+
+#   # get entry list
+#   begin
+#     @repo = Grit::Repo.new(@project.path)
+#     @contents = @repo.tree('master',@paths).contents
+#     if (params[:tree] == 'blob' || params[:tree] == 'line')
+#       @blob = @contents.first
+#       redirect_to @project, notice: 'project blob path is wrong.' and return unless @blob
+#     else
+#       @blob = nil
+#       @entries = @contents
+#     end
+#   rescue Grit::GitRuby::Repository::NoSuchPath
+#     redirect_to @project, notice: 'project tree path is wrong.' and return
+#   rescue
+#     redirect_to @project and return
+#   end
+# end
 end

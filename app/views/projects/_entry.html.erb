@@ -1,12 +1,13 @@
-<% ge = grit_entry_status(entry) %>
+<% current_file = @current_path + entry %>
+<% ge = fs_entry_status(current_file) %>
 <tr>
   <% icon_file = ge.is_tree? ? 'dir.png' : 'txt.png' %>
   <td><%= image_tag icon_file, :alt => 'entry icon' %></td>
   <td>
     <% if ge.is_tree? %>
-      <%= link_to grit_entry_basename(entry), tree_project_path(@project, 'tree', grit_entry_path(entry)), {id: 'codetree', remote: true } %>
+      <%= link_to fs_entry_basename(current_file), tree_project_path(@project, 'tree', fs_entry_path(entry, @paths)), {id: 'codetree', remote: true } %>
     <% else %>
-      <%= link_to grit_entry_basename(entry), blob_project_path(@project, 'blob', grit_entry_path(entry)), {id: 'codetree', remote: true } %>
+      <%= link_to fs_entry_basename(current_file), blob_project_path(@project, 'blob', fs_entry_path(entry, @paths)), {id: 'codetree', remote: true } %>
     <% end %>
   </td>
   <td><%= ge.size %></td>
