@@ -115,6 +115,8 @@ class ProjectsController < ApplicationController
     else
       @blob = nil
       @entries = Dir.entries(@current_path)
+      @entries.delete "."
+      @entries.delete ".."
     end
 
     logger.info "+++++++++++++++++++++++++++++++++++++"
