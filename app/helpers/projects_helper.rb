@@ -124,9 +124,9 @@ module ProjectsHelper
     end
   end
 
-# def fs_review_count(project, filename, linenum)
-#   Review.count(:conditions => "project_id = #{project.id} AND file = '#{filename}' AND line = #{linenum}")
-# end
+  def fs_review_count(project, filename, linenum)
+    Review.count(:conditions => "project_id = #{project.id} AND file = '#{filename}' AND line = #{linenum}")
+  end
 
   def fs_add_linenum(abs_filename)
     File.open(abs_filename, "r") do |file|
@@ -139,7 +139,6 @@ module ProjectsHelper
         newdata += prefix + ":  " + line
 
       # review_number = fs_review_count(@project, @paths, linenum)
-      # review_number = Review.count(:conditions => "project_id = #{project.id} AND file = '#{filename}' AND line = #{linenum}")
       # postfix = link_to "#{review_number}", line_project_path(@project, 'line', @paths, linenum)
       # newdata += "    " + postfix + "\n"
       end
@@ -169,29 +168,27 @@ module ProjectsHelper
 
   # rel means relative
   def fs_review_summary(abs_filename, project, rel_filename)
-  # File.open(abs_filename, "r") do |ffile|
-  #   linenum = 0
-  #   html_reviews = "\n"
-  #   ffile.each_line do |line|
-  #     linenum += 1
+    File.open(abs_filename, "r") do |ffile|
+      linenum = 0
+      html_reviews = "\n"
+      ffile.each_line do |line|
+        linenum += 1
 
-  #   # prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
-  #   # reviews = Review.with_project(project).with_file(rel_filename).with_line(linenum)
-  #   # reviews = Review.count(project_id: @project.id, file: rel_filename, file:linenum)
-  #   # reviews = Review.count('id', conditions: "project_id = #{@project.id} AND file = #{rel_filename} AND line = #{linenum}")
-  #   # html_reviews += "<p>#{reviews.count} reviews for #{prefix} line.</p>" if reviews.any?
+      # prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
+      # reviews = Review.with_project(project).with_file(rel_filename).with_line(linenum)
+      # html_reviews += "<p>#{reviews.count} reviews for #{prefix} line.</p>" if reviews.any?
 
-  #     prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
-  #     review_number = Review.count(:conditions => "project_id = #{@project.id} AND file = '#{rel_filename}' AND line = #{linenum}")
-  #     html_reviews += "<p>#{review_number} reviews for #{prefix} line.</p>" if review_number != 0
-  #   end
-  #   return html_reviews
-  # end
+        prefix = link_to "#{linenum}", line_project_path(@project, 'line', @paths, linenum)
+        review_number = fs_review_count(@project, rel_filename, linenum)
+        html_reviews += "<p>#{review_number} reviews for #{prefix} line.</p>" if review_number != 0
+      end
+      return html_reviews
+    end
 
-    html_reviews = "\n"
-    review_number = Review.count(:conditions => "project_id = #{@project.id} AND file = '#{rel_filename}'")
-    html_reviews += "<p>total #{review_number} reviews for #{rel_filename} file.</p>"
-    return html_reviews
+  # html_reviews = "\n"
+  # review_number = Review.count(:conditions => "project_id = #{@project.id} AND file = '#{rel_filename}'")
+  # html_reviews += "<p>total #{review_number} reviews for #{rel_filename} file.</p>"
+  # return html_reviews
   end
 
 # def grit_review_summary(data, project, file)
