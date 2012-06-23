@@ -124,6 +124,10 @@ module ProjectsHelper
     end
   end
 
+# def fs_review_count(project, filename, linenum)
+#   Review.count(:conditions => "project_id = #{project.id} AND file = '#{filename}' AND line = #{linenum}")
+# end
+
   def fs_add_linenum(abs_filename)
     File.open(abs_filename, "r") do |file|
       linenum = 0
@@ -133,6 +137,11 @@ module ProjectsHelper
         strnum = format("% 4d", linenum)
         prefix = link_to "#{strnum}", line_project_path(@project, 'line', @paths, linenum)
         newdata += prefix + ":  " + line
+
+      # review_number = fs_review_count(@project, @paths, linenum)
+      # review_number = Review.count(:conditions => "project_id = #{project.id} AND file = '#{filename}' AND line = #{linenum}")
+      # postfix = link_to "#{review_number}", line_project_path(@project, 'line', @paths, linenum)
+      # newdata += "    " + postfix + "\n"
       end
       return newdata
     end
