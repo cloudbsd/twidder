@@ -268,13 +268,25 @@ def make_projects
 
   Project.delete_all
 
+  # Clang
+  cc_name = 'Clang'
+  cc_desc = %{Clang is an "LLVM native" C/C++/Objective-C compiler, which aims to deliver amazingly fast compiles (e.g. about 3x faster than GCC when compiling Objective-C code in a debug configuration), extremely useful error and warning messages and to provide a platform for building great source level tools. The Clang Static Analyzer is a tool that automatically finds bugs in your code, and is a great example of the sort of tool that can be built using the Clang frontend as a library to parse C/C++ code.}
+  cc_path = '/Users/liqi/github/clang3.0'
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'project001.jpg')
+
+  # Redis
+  cc_name = 'Redis'
+  cc_desc = %{The script will ask you a few questions and will setup everything you need to run Redis properly as a background daemon that will start again on system reboots.}
+  cc_path = '/Users/liqi/github/redis-2.4.13'
+  qi = User.find_by_email('cloudbsd@gmail.com')
+  prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'project001.jpg')
+
   # CruiseControl.rb Project
   cc_name = 'CruiseControl.rb';
   cc_desc = %{CruiseControl.rb is a continuous integration server. It keeps everyone in your team informed about the health and progress of your project. CC.rb is easy to install, pleasant to use and simple to hack. It's written in Ruby and maintained in their spare time by developers at ThoughtWorks, a software development consultancy.}
   cc_path = '/Users/liqi/github/cruisecontrol.rb'
-
   qi = User.find_by_email('cloudbsd@gmail.com')
-
   prj = do_make_project(qi, cc_name, cc_desc, cc_path, 'project001.jpg')
 
   # Msgpack Project
