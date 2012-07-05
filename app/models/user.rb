@@ -50,14 +50,6 @@ class User < ActiveRecord::Base
     Micropost.followees_by(self)
   end
 
-  def reviews_by_file(project, file)
-    Review.reviews_by_file(self, project, file)
-  end
-
-  def reviews_by_line(project, file, line)
-    Review.reviews_by_file(self, project, file, line)
-  end
-
   def following?(other_user)
     self.followee_items.find_by_followee_id(other_user.id)
   end

@@ -168,6 +168,12 @@ module ProjectsHelper
 
   # rel means relative
   def fs_review_summary(abs_filename, project, rel_filename)
+    html_reviews = "<h3>Introduction</h3>"
+    html_reviews += "<p>Project: <b>#{project.name}</b></p>"
+    html_reviews += "<p>relative path: <b>#{rel_filename}</b></p>"
+    html_reviews += "<p>absolute path: <b>#{abs_filename}</b></p>"
+    return html_reviews
+
     File.open(abs_filename, "r") do |ffile|
       linenum = 0
       html_reviews = "\n"
