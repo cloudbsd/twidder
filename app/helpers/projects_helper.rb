@@ -135,8 +135,14 @@ module ProjectsHelper
       file.each_line do |line|
         linenum += 1
         strnum = format("% 4d", linenum)
-        prefix = link_to "#{strnum}", line_project_path(@project, 'line', @paths, linenum)
+        # this line is faster than line_project_path(@project, 'line', @paths, linenum)
+        prefix = "<a href='/projects/#{@project.id}/line/#{@paths}/#{linenum}?locale=#{params[:locale]}'>#{strnum}<\/a>"
         newdata += prefix + ":  " + line
+
+      # linenum += 1
+      # strnum = format("% 4d", linenum)
+      # prefix = link_to "#{strnum}", line_project_path(@project, 'line', @paths, linenum)
+      # newdata += prefix + ":  " + line
 
       # review_number = fs_review_count(@project, @paths, linenum)
       # postfix = link_to "#{review_number}", line_project_path(@project, 'line', @paths, linenum)

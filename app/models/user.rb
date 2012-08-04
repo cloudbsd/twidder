@@ -73,4 +73,16 @@ class User < ActiveRecord::Base
   def unjoin!(group)
     self.groups.delete group
   end
+
+  def watch?(group)
+    self.watchers.exists? group
+  end
+
+  def watch!(group)
+    self.watchers << group
+  end
+
+  def unwatch!(group)
+    self.watchers.delete group
+  end
 end
