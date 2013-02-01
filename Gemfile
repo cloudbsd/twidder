@@ -1,7 +1,7 @@
-#source 'https://rubygems.org'
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
+#source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,7 +12,7 @@ gem 'sqlite3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -36,11 +36,12 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'debugger'
 
 
 # To add user authentication feature
-gem 'devise', '~> 2.0.0'
+#gem 'devise', '~> 2.0.0'
+gem 'devise', '~> 2.2.0'
 gem 'devise-i18n'
 
 gem 'rails-i18n'
@@ -50,10 +51,10 @@ gem 'faker'
 gem 'grit'
 
 group :assets do
-# gem 'bootstrap-sass'
-  gem 'anjlab-bootstrap-rails', '>= 2.0.2', :require => 'bootstrap-rails'
+  gem 'bootstrap-sass'
+# gem 'anjlab-bootstrap-rails', '>= 2.0.2', :require => 'bootstrap-rails'
 
-  gem "google-code-prettify-rails"
+# gem "google-code-prettify-rails"
 
 # gem 'will_paginate'
   gem 'bootstrap-will_paginate'
