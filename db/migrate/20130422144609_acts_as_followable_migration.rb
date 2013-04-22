@@ -1,4 +1,4 @@
-class CreateFollowingItems < ActiveRecord::Migration
+class ActsAsFollowableMigration < ActiveRecord::Migration
   def change
     create_table :following_items do |t|
       t.references :follower, :null => false

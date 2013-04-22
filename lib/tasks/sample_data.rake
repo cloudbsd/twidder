@@ -98,8 +98,8 @@ def make_following_items
   qi = User.find_by_email('cloudbsd@gmail.com')
   followees = users[3..50]
   followers = users[3..40]
-  followees.each { |followee| qi.follow!(followee) }
-  followers.each { |follower| follower.follow!(qi) }
+  followees.each { |followee| qi.follow(followee) }
+  followers.each { |follower| follower.follow(qi) }
 end
 
 
