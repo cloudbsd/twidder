@@ -59,3 +59,5 @@ group :assets do
 # gem 'will_paginate'
   gem 'bootstrap-will_paginate'
 end
+
+gem 'acts_as_followable', :git => "git@dragon:acts_as_followable.git"

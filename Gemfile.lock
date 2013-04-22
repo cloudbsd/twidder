@@ -1,3 +1,10 @@
+GIT
+  remote: git@dragon:acts_as_followable.git
+  revision: fd0cb3905a7e1712f155464643e2978cd58384aa
+  specs:
+    acts_as_followable (0.0.1)
+      rails (~> 3.2.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -129,6 +136,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_followable!
   bootstrap-sass
   bootstrap-will_paginate
   coffee-rails (~> 3.2.1)

@@ -3,7 +3,7 @@ class FollowingItemsController < ApplicationController
 
   def create
     @user = User.find(params[:following_item][:followee_id])
-    current_user.follow!(@user)
+    current_user.follow(@user)
 
     respond_to do |format|
       format.html { redirect_to @user }
@@ -13,7 +13,7 @@ class FollowingItemsController < ApplicationController
 
   def destroy
     @user = FollowingItem.find(params[:id]).followee
-    current_user.unfollow!(@user)
+    current_user.unfollow(@user)
 
     respond_to do |format|
       format.html { redirect_to @user }
