@@ -1,8 +1,8 @@
 GIT
   remote: git@dragon:acts_as_followable.git
-  revision: fd0cb3905a7e1712f155464643e2978cd58384aa
+  revision: 8b82fab199e8e2394f08bdfe9e0136759dd8bb95
   specs:
-    acts_as_followable (0.0.1)
+    acts_as_followable (0.0.2)
       rails (~> 3.2.13)
 
 GEM

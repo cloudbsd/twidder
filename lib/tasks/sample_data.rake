@@ -37,8 +37,8 @@ def make_users
                        :nickname => 'Administrator',
                        :email => 'admin@gmail.com',
                        :gravatar => 'user001.jpg',
-                       :password => '888888',
-                       :password_confirmation => '888888')
+                       :password => 'password',
+                       :password_confirmation => 'password')
 # admin.toggle!(:admin)
   print_content 'add_user: ' << admin.nickname
 
@@ -46,8 +46,8 @@ def make_users
                     :nickname => 'Qi Li',
                     :email => 'cloudbsd@gmail.com',
                     :gravatar => 'user_qi.png',
-                    :password => '888888',
-                    :password_confirmation => '888888')
+                    :password => 'password',
+                    :password_confirmation => 'password')
 # qi.toggle!(:admin)
   print_content 'add_user: ' << qi.nickname
 
@@ -55,8 +55,8 @@ def make_users
                          :nickname => 'Ritchie Li',
                          :email => 'ritchie.li@nebutown.com',
                          :gravatar => 'user002.jpg',
-                         :password => '888888',
-                         :password_confirmation => '888888')
+                         :password => 'password',
+                         :password_confirmation => 'password')
 # ritchie.toggle!(:admin)
   print_content 'add_user: ' << ritchie.nickname
 
@@ -64,8 +64,8 @@ def make_users
                        :nickname => 'Danny Ren',
                        :email => 'danny.ren@nebutown.com',
                        :gravatar => 'user003.jpg',
-                       :password => '888888',
-                       :password_confirmation => '888888')
+                       :password => 'password',
+                       :password_confirmation => 'password')
   print_content 'add_user: ' << danny.nickname
 
   50.times do |n|
@@ -73,7 +73,7 @@ def make_users
     nickname = Faker::Name.name
     email = name + "@gmail.org"
     gravatar = format "user%03d.jpg", n%29+1
-    password = "888888"
+    password = "password"
     User.create!(name: name,
                  nickname: nickname,
                  email: email,
